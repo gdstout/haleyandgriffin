@@ -21,13 +21,13 @@ const App = () => {
       <Menu/>
       <MainContainer>
         <Routes>
-          <Route path="/" component={<Home/>} exact/>
-          <Route path="/story" component={<Story/>}/>
-          <Route path="/details" component={<Details/>}/>
-          <Route path="/weddingparty" component={<WeddingParty/>}/>
-          <Route path="/travel" component={<Travel/>}/>
-          <Route path="/registry" component={<Registry/>}/>
-          <Route path="/qna" component={<QNA/>}/>
+          <Route path="/" element={<Home/>} exact/>
+          <Route path="/story" element={<Story/>}/>
+          <Route path="/details" element={<Details/>}/>
+          <Route path="/weddingparty" element={<WeddingParty/>}/>
+          <Route path="/travel" element={<Travel/>}/>
+          <Route path="/registry" element={<Registry/>}/>
+          <Route path="/qna" element={<QNA/>}/>
         </Routes>
       </MainContainer>
     </div>

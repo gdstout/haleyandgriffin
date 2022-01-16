@@ -15,6 +15,7 @@ import { Link } from "react-router-dom";
 
 const AppBarStyled = styled(AppBar)(({ theme }) => ({
   position: "fixed",
+  display: "flex",
   alignItems: "center",
   justifyContent: "center",
   [theme.breakpoints.up("lg")]: {
@@ -26,24 +27,37 @@ const AppBarStyled = styled(AppBar)(({ theme }) => ({
 }));
 
 const ToolbarBig = styled(Toolbar)({
-  alignContent: "flext-start",
-  alignSelf: "center",
+  display: "flex",
+  alignItems: "center",
+  alignContent: "center",
 });
 
-const Spacer = styled("div")({
-  width: "10px",
+const ToolbarSmall = styled(Toolbar)({
+  alignContent: "flex-start",
 });
 
 const MenuBlock = styled("div")({
-  width: "145px",
   display: "grid",
+  flex: 1,
+  flexBasis: "200px",
+  minWidth: "150px",
+  maxWidth: "200px",
   justifyItems: "center",
 });
 
 const TitleBlock = styled("div")({
-  width: "450px",
+  flex: 1,
+  flexBasis: "450px",
+  minWidth: "450px",
+  maxWidth: "500px",
   display: "grid",
   justifyItems: "center",
+});
+
+const TitleBlockSmall = styled("div")({
+  display: "grid",
+  justifyItems: "center",
+  width: "100%",
 });
 
 const PageLink = styled(Link)(({ theme }) => ({
@@ -62,7 +76,15 @@ const MainPageLink = styled(Link)(({ theme }) => ({
 const MenuBar = () => {
   const theme = useTheme();
 
-  const [anchor, setAnchor] = useState(false);
+  const [anchor, setAnchor] = useState(null);
+
+  const handleClick = (e) => {
+    setAnchor(e.currentTarget);
+  };
+
+  const handleClose = () => {
+    setAnchor(null);
+  };
 
   let content = (
     <AppBarStyled>
@@ -73,38 +95,37 @@ const MenuBar = () => {
               <PageLink to="/story">OUR STORY</PageLink>
             </Typography>
           </MenuBlock>
-          <Spacer />
+
           <MenuBlock>
             <Typography>
               <PageLink to="/details">DETAILS</PageLink>
             </Typography>
           </MenuBlock>
-          <Spacer />
+
           <MenuBlock>
             <Typography>
               <PageLink to="/travel">TRAVEL & KC</PageLink>
             </Typography>
           </MenuBlock>
 
-          <Spacer />
           <TitleBlock>
-            <Typography variant="h3" align="center">
+            <Typography variant="h3">
               <MainPageLink to="/">HALEY & GRIFFIN</MainPageLink>
             </Typography>
           </TitleBlock>
-          <Spacer />
+
           <MenuBlock>
             <Typography>
               <PageLink to="/weddingparty">WEDDING PARTY</PageLink>
             </Typography>
           </MenuBlock>
-          <Spacer />
+
           <MenuBlock>
             <Typography>
               <PageLink to="/registry">REGISTRY</PageLink>
             </Typography>
           </MenuBlock>
-          <Spacer />
+
           <MenuBlock>
             <Typography>
               <PageLink to="/qna">Q & A</PageLink>
@@ -112,14 +133,53 @@ const MenuBar = () => {
           </MenuBlock>
         </ToolbarBig>
       ) : (
-        <Toolbar>
-          
-          <TitleBlock>
-            <Typography variant="h5" align="center">
+        <ToolbarSmall>
+          <IconButton onClick={handleClick}>
+            <MenuIcon />
+          </IconButton>
+          <Menu
+            anchorEl={anchor}
+            open={Boolean(anchor)}
+            keepMounted
+            onClose={handleClose}
+          >
+            <PageLink to="/story">
+              <MenuItem onClick={handleClose}>
+                <Typography>OUR STORY</Typography>
+              </MenuItem>
+            </PageLink>
+            <PageLink to="/details">
+              <MenuItem onClick={handleClose}>
+                <Typography>DETAILS</Typography>
+              </MenuItem>
+            </PageLink>
+            <PageLink to="/travel">
+              <MenuItem onClick={handleClose}>
+                <Typography>TRAVEL & KC</Typography>
+              </MenuItem>
+            </PageLink>
+            <PageLink to="/weddingparty">
+              <MenuItem onClick={handleClose}>
+                <Typography>WEDDING PARTY</Typography>
+              </MenuItem>
+            </PageLink>
+            <PageLink to="/registry">
+              <MenuItem onClick={handleClose}>
+                <Typography>REGISTRY</Typography>
+              </MenuItem>
+            </PageLink>
+            <PageLink to="/qna">
+              <MenuItem onClick={handleClose}>
+                <Typography>Q & A</Typography>
+              </MenuItem>
+            </PageLink>
+          </Menu>
+          <TitleBlockSmall>
+            <Typography variant="h4">
               <MainPageLink to="/">HALEY & GRIFFIN</MainPageLink>
             </Typography>
-          </TitleBlock>
-        </Toolbar>
+          </TitleBlockSmall>
+        </ToolbarSmall>
       )}
     </AppBarStyled>
   );

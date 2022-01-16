@@ -22,6 +22,9 @@ const theme = createTheme({
     h3: {
       fontFamily: "Playfair Display",
     },
+    h4: {
+      fontFamily: "Playfair Display"
+    },
     fontFamily: "Nanum Myeongjo",
   },
   breakpoints: {
@@ -29,7 +32,7 @@ const theme = createTheme({
       xs: 0,
       sm: 600,
       md: 1200,
-      lg: 1400,
+      lg: 1450,
       xl: 1800,
     },
   },

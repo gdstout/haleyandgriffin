@@ -31,21 +31,8 @@ const ToolbarBig = styled(Toolbar)({
   width: "83%"
 });
 
-const ToolbarSmall = styled(Toolbar)({
-  display: "flex",
-  marginLeft: "16px",
-  width: "100%",
-});
-
 const MenuBlock = styled(Grid)({
   alignItems: "center",
-});
-
-const TitleBlockSmall = styled("div")({
-  flex: 1,
-  display: "flex",
-  justifyContent: "center",
-  position: "relative"
 });
 
 const PageLink = styled(Link)(({ theme }) => ({
@@ -55,6 +42,26 @@ const PageLink = styled(Link)(({ theme }) => ({
     color: "#000000",
   },
 }));
+
+const ToolbarSmall = styled(Toolbar)({
+  position: "relative",
+  width: "100%",
+  overflowX: "none",
+});
+
+const TitleBlockSmall = styled("div")({
+  float: "none",
+  position: "absolute",
+  left: "50%",
+  transform: "translate(-50%)",
+  minWidth: "285px"
+});
+
+const StyledIconButton = styled(IconButton)({
+  marginLeft: "8px",
+  marginRight: "8px",
+  float: "left"
+});
 
 const MainPageLink = styled(Link)(({ theme }) => ({
   textDecoration: "none",
@@ -124,9 +131,9 @@ const MenuBar = () => {
         </ToolbarBig>
       ) : (
         <ToolbarSmall>
-          <IconButton onClick={handleClick}>
+          <StyledIconButton onClick={handleClick}>
             <MenuIcon />
-          </IconButton>
+          </StyledIconButton>
           <Menu
             anchorEl={anchor}
             open={Boolean(anchor)}

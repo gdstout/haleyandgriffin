@@ -8,6 +8,7 @@ import {
   IconButton,
   Menu,
   MenuItem,
+  Grid,
 } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
 import { styled } from "@mui/material/styles";
@@ -27,37 +28,24 @@ const AppBarStyled = styled(AppBar)(({ theme }) => ({
 }));
 
 const ToolbarBig = styled(Toolbar)({
-  display: "flex",
-  alignItems: "center",
-  alignContent: "center",
+  width: "83%"
 });
 
 const ToolbarSmall = styled(Toolbar)({
-  alignContent: "flex-start",
+  display: "flex",
+  marginLeft: "16px",
+  width: "100%",
 });
 
-const MenuBlock = styled("div")({
-  display: "grid",
-  flex: 1,
-  flexBasis: "200px",
-  minWidth: "150px",
-  maxWidth: "200px",
-  justifyItems: "center",
-});
-
-const TitleBlock = styled("div")({
-  flex: 1,
-  flexBasis: "450px",
-  minWidth: "450px",
-  maxWidth: "500px",
-  display: "grid",
-  justifyItems: "center",
+const MenuBlock = styled(Grid)({
+  alignItems: "center",
 });
 
 const TitleBlockSmall = styled("div")({
-  display: "grid",
-  justifyItems: "center",
-  width: "100%",
+  flex: 1,
+  display: "flex",
+  justifyContent: "center",
+  position: "relative"
 });
 
 const PageLink = styled(Link)(({ theme }) => ({
@@ -90,47 +78,49 @@ const MenuBar = () => {
     <AppBarStyled>
       {useMediaQuery(theme.breakpoints.up("lg")) ? (
         <ToolbarBig>
-          <MenuBlock>
-            <Typography>
-              <PageLink to="/story">OUR STORY</PageLink>
-            </Typography>
-          </MenuBlock>
+          <Grid container  justifyContent="space-around" alignItems="center">
+            <MenuBlock item>
+              <Typography>
+                <PageLink to="/story">OUR STORY</PageLink>
+              </Typography>
+            </MenuBlock>
 
-          <MenuBlock>
-            <Typography>
-              <PageLink to="/details">DETAILS</PageLink>
-            </Typography>
-          </MenuBlock>
+            <MenuBlock item>
+              <Typography>
+                <PageLink to="/details">DETAILS</PageLink>
+              </Typography>
+            </MenuBlock>
 
-          <MenuBlock>
-            <Typography>
-              <PageLink to="/travel">TRAVEL & KC</PageLink>
-            </Typography>
-          </MenuBlock>
+            <MenuBlock item>
+              <Typography>
+                <PageLink to="/travel">TRAVEL & KC</PageLink>
+              </Typography>
+            </MenuBlock>
 
-          <TitleBlock>
-            <Typography variant="h3">
-              <MainPageLink to="/">HALEY & GRIFFIN</MainPageLink>
-            </Typography>
-          </TitleBlock>
+            <MenuBlock item >
+              <Typography variant="h3">
+                <MainPageLink to="/">HALEY & GRIFFIN</MainPageLink>
+              </Typography>
+            </MenuBlock>
 
-          <MenuBlock>
-            <Typography>
-              <PageLink to="/weddingparty">WEDDING PARTY</PageLink>
-            </Typography>
-          </MenuBlock>
+            <MenuBlock item>
+              <Typography>
+                <PageLink to="/weddingparty">WEDDING PARTY</PageLink>
+              </Typography>
+            </MenuBlock>
 
-          <MenuBlock>
-            <Typography>
-              <PageLink to="/registry">REGISTRY</PageLink>
-            </Typography>
-          </MenuBlock>
+            <MenuBlock item>
+              <Typography>
+                <PageLink to="/registry">REGISTRY</PageLink>
+              </Typography>
+            </MenuBlock>
 
-          <MenuBlock>
-            <Typography>
-              <PageLink to="/qna">Q & A</PageLink>
-            </Typography>
-          </MenuBlock>
+            <MenuBlock item>
+              <Typography>
+                <PageLink to="/qna">Q & A</PageLink>
+              </Typography>
+            </MenuBlock>
+          </Grid>
         </ToolbarBig>
       ) : (
         <ToolbarSmall>

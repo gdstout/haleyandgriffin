@@ -40,6 +40,7 @@ const PageLink = styled(Link)(({ theme }) => ({
   color: theme.palette.secondary.main,
   "&:hover": {
     color: "#000000",
+    textDecoration: "underline"
   },
 }));
 

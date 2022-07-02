@@ -10,16 +10,17 @@ import Details from "./pages/details";
 import Travel from "./pages/travel";
 import Registry from "./pages/registry";
 import QNA from "./pages/qna";
+import Footer from "./footer";
 
-const MainContainer = styled(Container)({
+const MainContainer = styled(Container)(({ theme }) => ({
   paddingTop: "95px",
-});
+}));
 
 const App = () => {
   let content = (
     <div>
       <MenuBar />
-      <MainContainer>
+      <MainContainer maxWidth="lg">
         <Routes>
           <Route path="/" element={<Home />} exact />
           <Route path="/story" element={<Story />} />
@@ -30,6 +31,7 @@ const App = () => {
           <Route path="/qna" element={<QNA />} />
         </Routes>
       </MainContainer>
+      <Footer />
     </div>
   );
 

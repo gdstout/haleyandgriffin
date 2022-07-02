@@ -2,10 +2,11 @@ import React from "react";
 import ReactDOM from "react-dom";
 import { BrowserRouter } from "react-router-dom";
 import "./index.css";
-import { createTheme, ThemeProvider } from "@mui/material/styles";
+import { createTheme, responsiveFontSizes, ThemeProvider } from "@mui/material/styles";
 import App from "./components/app";
+import { CssBaseline } from "@mui/material";
 
-const theme = createTheme({
+let theme = createTheme({
   palette: {
     type: "light",
     primary: {
@@ -15,7 +16,7 @@ const theme = createTheme({
       main: "#165916",
     },
     background: {
-      default: "#fafafa",
+      default: "#eff4ec",
     },
   },
   typography: {
@@ -31,16 +32,19 @@ const theme = createTheme({
     values: {
       xs: 0,
       sm: 600,
-      md: 1000,
+      md: 800,
       lg: 1250,
       xl: 1800,
     },
   },
 });
 
+theme = responsiveFontSizes(theme);
+
 ReactDOM.render(
   <React.StrictMode>
     <ThemeProvider theme={theme}>
+      <CssBaseline/>
       <BrowserRouter>
         <App />
       </BrowserRouter>

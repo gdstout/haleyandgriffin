@@ -4,11 +4,10 @@ import {
   useJsApiLoader
 } from "@react-google-maps/api";
 
-const API_KEY = "AIzaSyA1v3DdbFN-TzkHDJNG8cO4s7RsjpgpA7o";
 
 const Map = () => {
   const { isLoaded } = useJsApiLoader({
-    googleMapsApiKey: API_KEY,
+    googleMapsApiKey: process.env.MAPS_API_KEY,
   });
 
   const center = useMemo(() => ({ lat: 39.1509528, lng: -94.6515581 }), []);

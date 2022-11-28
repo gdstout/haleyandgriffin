@@ -121,7 +121,7 @@ const MapInfoDiv = styled("div")({
 
 const Travel = () => {
   const { isLoaded } = useJsApiLoader({
-    googleMapsApiKey: process.env.MAPS_API_KEY,
+    googleMapsApiKey: process.env.REACT_APP_MAPS_API_KEY,
   });
 
   const options = {

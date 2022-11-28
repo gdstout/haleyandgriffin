@@ -1,10 +1,10 @@
 import React from 'react';
 
-const QNA = () => {
+const RSVP = () => {
   let content = (
-    <h1>Q & A</h1>
+    <h1>RSVP</h1>
   );
   return content;
 }
 
-export default QNA;
+export default RSVP;

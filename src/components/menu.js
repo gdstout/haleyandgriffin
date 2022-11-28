@@ -12,7 +12,7 @@ import {
 } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
 import { styled } from "@mui/material/styles";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 const AppBarStyled = styled(AppBar)(({ theme }) => ({
   position: "fixed",
@@ -35,12 +35,13 @@ const MenuBlock = styled(Grid)({
   alignItems: "center",
 });
 
-const PageLink = styled(Link)(({ theme }) => ({
-  textDecoration: "none",
+const PageLink = styled(NavLink)(({ theme }) => ({
+  textDecoration: "underline rgba(0, 0, 0, 0)",
   color: theme.palette.secondary.main,
+  transition: "text-decoration-color 500ms",
   "&:hover": {
     color: "#000000",
-    textDecoration: "underline"
+    textDecorationColor: "rgba(0, 0, 0, 1)"
   },
 }));
 
@@ -55,7 +56,7 @@ const TitleBlockSmall = styled("div")({
   position: "absolute",
   left: "50%",
   transform: "translate(-50%)",
-  minWidth: "285px"
+  minWidth: "210px"
 });
 
 const StyledIconButton = styled(IconButton)({
@@ -64,7 +65,7 @@ const StyledIconButton = styled(IconButton)({
   float: "left"
 });
 
-const MainPageLink = styled(Link)(({ theme }) => ({
+const MainPageLink = styled(NavLink)(({ theme }) => ({
   textDecoration: "none",
   color: theme.palette.secondary.main,
 }));
@@ -73,6 +74,7 @@ const MenuBar = () => {
   const theme = useTheme();
 
   const [anchor, setAnchor] = useState(null);
+  const [activePage, setActivePage] = useState("home");
 
   const handleClick = (e) => {
     setAnchor(e.currentTarget);
@@ -82,50 +84,54 @@ const MenuBar = () => {
     setAnchor(null);
   };
 
+  const handlePageChange = (newPage) => {
+    setActivePage(newPage);
+  };
+
   let content = (
     <AppBarStyled>
       {useMediaQuery(theme.breakpoints.up("lg")) ? (
         <ToolbarBig>
           <Grid container  justifyContent="space-around" alignItems="center">
             <MenuBlock item>
-              <Typography>
-                <PageLink to="/story">OUR STORY</PageLink>
+              <Typography sx={{textDecoration: activePage === "story" ? "underline" : "", color: "green"}}>
+                <PageLink to="/story" onClick={() => handlePageChange("story")}>OUR STORY</PageLink>
               </Typography>
             </MenuBlock>
 
             <MenuBlock item>
-              <Typography>
-                <PageLink to="/details">DETAILS</PageLink>
+              <Typography sx={{textDecoration: activePage === "details" ? "underline" : "", color: "green"}}>
+                <PageLink to="/details" onClick={() => handlePageChange("details")}>DETAILS</PageLink>
               </Typography>
             </MenuBlock>
 
             <MenuBlock item>
-              <Typography>
-                <PageLink to="/travel">TRAVEL & KC</PageLink>
+              <Typography sx={{textDecoration: activePage === "travel" ? "underline" : "", color: "green"}}>
+                <PageLink to="/travel" onClick={() => handlePageChange("travel")}>TRAVEL & KC</PageLink>
               </Typography>
             </MenuBlock>
 
             <MenuBlock item >
               <Typography variant="h3">
-                <MainPageLink to="/">HALEY & GRIFFIN</MainPageLink>
+                <MainPageLink to="/" onClick={() => handlePageChange("home")}>HALEY & GRIFFIN</MainPageLink>
               </Typography>
             </MenuBlock>
 
             <MenuBlock item>
-              <Typography>
-                <PageLink to="/weddingparty">WEDDING PARTY</PageLink>
+              <Typography sx={{textDecoration: activePage === "weddingparty" ? "underline" : "", color: "green"}}>
+                <PageLink to="/weddingparty" onClick={() => handlePageChange("weddingparty")}>WEDDING PARTY</PageLink>
               </Typography>
             </MenuBlock>
 
             <MenuBlock item>
-              <Typography>
-                <PageLink to="/registry">REGISTRY</PageLink>
+              <Typography sx={{textDecoration: activePage === "registry" ? "underline" : "", color: "green"}}>
+                <PageLink to="/registry" onClick={() => handlePageChange("registry")}>REGISTRY</PageLink>
               </Typography>
             </MenuBlock>
 
             <MenuBlock item>
-              <Typography>
-                <PageLink to="/qna">Q & A</PageLink>
+              <Typography sx={{textDecoration: activePage === "rsvp" ? "underline" : "", color: "green"}}>
+                <PageLink to="/rsvp" onClick={() => handlePageChange("rsvp")}>RSVP</PageLink>
               </Typography>
             </MenuBlock>
           </Grid>
@@ -168,7 +174,7 @@ const MenuBar = () => {
             </PageLink>
             <PageLink to="/qna">
               <MenuItem onClick={handleClose}>
-                <Typography>Q & A</Typography>
+                <Typography>FAQ</Typography>
               </MenuItem>
             </PageLink>
           </Menu>

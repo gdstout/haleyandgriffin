@@ -14,6 +14,7 @@ let theme = createTheme({
     },
     secondary: {
       main: "#165916",
+      faded: "#6d8a6d"
     },
     background: {
       default: "#eff4ec",
@@ -32,7 +33,7 @@ let theme = createTheme({
     values: {
       xs: 0,
       sm: 600,
-      md: 800,
+      md: 950,
       lg: 1250,
       xl: 1800,
     },

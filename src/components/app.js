@@ -1,5 +1,6 @@
-import React from "react";
-import { Route, Routes } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { Route, Routes, useLocation } from "react-router-dom";
+import SlideRoutes from "react-slide-routes";
 import styled from "@emotion/styled";
 import MenuBar from "./menu";
 import { Container } from "@mui/material";
@@ -9,29 +10,39 @@ import WeddingParty from "./pages/wedding_party";
 import Details from "./pages/details";
 import Travel from "./pages/travel";
 import Registry from "./pages/registry";
-import QNA from "./pages/qna";
+import RSVP from "./pages/rsvp";
 import Footer from "./footer";
 
 const MainContainer = styled(Container)(({ theme }) => ({
   paddingTop: "95px",
 }));
 
+const pages = [
+  "/story",
+  "/details",
+  "/travel",
+  "/",
+  "/weddingparty",
+  "/registry",
+  "/rsvp",
+];
+
 const App = () => {
+  const location = useLocation();
   let content = (
     <div>
       <MenuBar />
       <MainContainer maxWidth="lg">
-        <Routes>
-          <Route path="/" element={<Home />} exact />
+        <SlideRoutes location={location} duration={600} pathList={pages}>
+        <Route path="/" element={<Home />} />
           <Route path="/story" element={<Story />} />
           <Route path="/details" element={<Details />} />
-          <Route path="/weddingparty" element={<WeddingParty />} />
           <Route path="/travel" element={<Travel />} />
+          <Route path="/weddingparty" element={<WeddingParty />} />
           <Route path="/registry" element={<Registry />} />
-          <Route path="/qna" element={<QNA />} />
-        </Routes>
+          <Route path="/rsvp" element={<RSVP />} />
+        </SlideRoutes>
       </MainContainer>
-      <Footer />
     </div>
   );
 

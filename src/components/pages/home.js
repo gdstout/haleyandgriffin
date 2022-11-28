@@ -1,7 +1,7 @@
 import React from "react";
 import { Container, Grid, Typography } from "@mui/material";
 import { styled } from "@mui/material/styles";
-import Smiley from "../../images/smiley.JPG";
+import Smiley from "../../images/smiley.jpg";
 import Sprig1 from "../../images/sprig1.png";
 
 const ImgContainer = styled("div")({

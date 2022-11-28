@@ -12,9 +12,7 @@ import AccountBalanceIcon from "@mui/icons-material/AccountBalance";
 import LocalDiningIcon from "@mui/icons-material/LocalDining";
 import { GoogleMap, useJsApiLoader, Marker } from "@react-google-maps/api";
 
-import HawthorneHouse from "../../images/hawthornehouse1.jpeg";
-
-const API_KEY = "AIzaSyA1v3DdbFN-TzkHDJNG8cO4s7RsjpgpA7o";
+import HawthorneHouse from "../../images/hawthornehouse1.jpg";
 
 const locations = {
   default: {
@@ -123,7 +121,7 @@ const MapInfoDiv = styled("div")({
 
 const Travel = () => {
   const { isLoaded } = useJsApiLoader({
-    googleMapsApiKey: API_KEY,
+    googleMapsApiKey: process.env.MAPS_API_KEY,
   });
 
   const options = {

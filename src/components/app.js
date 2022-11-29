@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from "react";
-import { Route, Routes, useLocation } from "react-router-dom";
+import React from "react";
+import { Route, useLocation } from "react-router-dom";
 import SlideRoutes from "react-slide-routes";
 import styled from "@emotion/styled";
 import MenuBar from "./menu";
@@ -13,8 +13,14 @@ import Registry from "./pages/registry";
 import RSVP from "./pages/rsvp";
 import Footer from "./footer";
 
+const PageContainer = styled("div")({
+  position: "relative",
+  minHeight: "100vh"
+});
+
 const MainContainer = styled(Container)(({ theme }) => ({
   paddingTop: "95px",
+  paddingBottom: "85px"
 }));
 
 const pages = [
@@ -30,7 +36,7 @@ const pages = [
 const App = () => {
   const location = useLocation();
   let content = (
-    <div>
+    <PageContainer>
       <MenuBar />
       <MainContainer maxWidth="lg">
         <SlideRoutes location={location} duration={600} pathList={pages}>
@@ -43,7 +49,9 @@ const App = () => {
           <Route path="/rsvp" element={<RSVP />} />
         </SlideRoutes>
       </MainContainer>
-    </div>
+
+      <Footer />
+    </PageContainer>
   );
 
   return content;

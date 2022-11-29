@@ -172,9 +172,9 @@ const MenuBar = () => {
                 <Typography>REGISTRY</Typography>
               </MenuItem>
             </PageLink>
-            <PageLink to="/qna">
+            <PageLink to="/rsvp">
               <MenuItem onClick={handleClose}>
-                <Typography>FAQ</Typography>
+                <Typography>RSVP</Typography>
               </MenuItem>
             </PageLink>
           </Menu>

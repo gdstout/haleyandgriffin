@@ -2,7 +2,6 @@ import React from "react";
 import { Container, Grid, Typography } from "@mui/material";
 import { styled } from "@mui/material/styles";
 import Smiley from "../../images/smiley.jpg";
-import Sprig1 from "../../images/sprig1.png";
 
 const ImgContainer = styled("div")({
   paddingTop: "30px",
@@ -25,7 +24,21 @@ const Home = () => {
         </Grid>
 
         <Grid item>
-          <Typography variant="h2">November 2023</Typography>
+          <Typography variant="h2" align="center">
+            November 2023
+          </Typography>
+          <Typography variant="h6" align="center">
+            Parkville, MO
+          </Typography>
+        </Grid>
+        <Grid item>
+          <Container maxWidth="md">
+            <Typography variant="h6">
+              Welcome to our wedding website! Thanks for helping us celebrate
+              our special day; we really appreciate it. Please visit the various
+              pages to find out more about us, get day-of information, RSVP, and more!
+            </Typography>
+          </Container>
         </Grid>
       </Grid>
     </Container>

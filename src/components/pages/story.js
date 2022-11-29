@@ -3,7 +3,6 @@ import { styled } from "@mui/material/styles";
 import { Card, Container, Grid, Paper, Typography } from "@mui/material";
 import ReactCardFlip from "react-card-flip";
 
-
 const CardBack = styled("div")({
   display: "flex",
   alignItems: "center",
@@ -60,7 +59,10 @@ const Story = () => {
       <Grid container spacing={2}>
         <Grid item lg={3} xs={6}>
           <CardBack>
-            <Typography variant="h4">Pop Quiz</Typography>
+            <Grid container direction="column" justifyContent="center">
+              <Typography variant="h4">Pop Quiz</Typography>
+              <Typography> How well do you know us?</Typography>
+            </Grid>
           </CardBack>
         </Grid>
         <Grid item lg={3} xs={6}>
@@ -71,12 +73,10 @@ const Story = () => {
               onMouseOut={() => handleRaised(0)}
               raised={cardsRaised[0]}
             >
-              <CardFront>
-                This is the first question of the quiz, do you know it?
-              </CardFront>
+              <CardFront>Where did we first meet? (Before we started dating)</CardFront>
             </Card>
             <Card onClick={() => handleFlip(0)}>
-              <CardBack>Hello</CardBack>
+              <CardBack>Biology class, freshman year of high school.</CardBack>
             </Card>
           </ReactCardFlip>
         </Grid>
@@ -88,10 +88,10 @@ const Story = () => {
               onMouseOut={() => handleRaised(1)}
               raised={cardsRaised[1]}
             >
-              <CardFront>Hello</CardFront>
+              <CardFront>How long have we been dating?</CardFront>
             </Card>
             <Card onClick={() => handleFlip(1)}>
-              <CardBack>Hello</CardBack>
+              <CardBack>6 years and counting!</CardBack>
             </Card>
           </ReactCardFlip>
         </Grid>
@@ -103,10 +103,10 @@ const Story = () => {
               onMouseOut={() => handleRaised(2)}
               raised={cardsRaised[2]}
             >
-              <CardFront>Hello</CardFront>
+              <CardFront>Where did we get engaged?</CardFront>
             </Card>
             <Card onClick={() => handleFlip(2)}>
-              <CardBack>Hello</CardBack>
+              <CardBack>Great Falls National Park in Virginia</CardBack>
             </Card>
           </ReactCardFlip>
         </Grid>

@@ -32,6 +32,7 @@ const RSVP = () => {
   const [name, setName] = useState("");
   const [response, setResponse] = useState("Accept");
   const [plusOne, setPlusOne] = useState("No");
+  const [plusOneName, setPlusOneName] = useState("");
   const [dietaryRestrictions, setDietaryRestrictions] = useState("");
 
   const handlePasswordInput = (e) => {
@@ -39,6 +40,7 @@ const RSVP = () => {
     switch (e.target.value) {
       case formSinglePassword:
         setLocked(false);
+        setPlusOne("No");
         break;
       case formPlusOnePassword:
         setLocked(false);
@@ -47,17 +49,14 @@ const RSVP = () => {
       default:
         setLocked(true);
         setPlusOneLocked(true);
+        setPlusOne("No");
         break;
     }
   };
 
   const handleName = (e) => {
     setName(e.target.value);
-    if(e.target.value.match(/\b[a-zA-Z.,]+\s[a-zA-Z.,]+\b/)){
-      setValidForm(true);
-    }else{
-      setValidForm(false);
-    }
+    checkValidForm(e.target.value, plusOneName, plusOne);
   };
 
   const handleResponse = (e) => {
@@ -66,11 +65,33 @@ const RSVP = () => {
 
   const handlePlusOne = (e) => {
     setPlusOne(e.target.value);
+    checkValidForm(name, plusOneName, e.target.value);
+  };
+
+  const handlePlusOneName = (e) => {
+    setPlusOneName(e.target.value);
+    checkValidForm(name, e.target.value, plusOne);
   };
 
   const handleDietaryRestrictions = (e) => {
     setDietaryRestrictions(e.target.value);
   };
+
+  function checkValidForm(firstFieldText, secondFieldText, plusOneParam){
+    if(firstFieldText.match(/\b[a-zA-Z.,]+\s[a-zA-Z.,]+\b/)){
+      if(plusOneParam === "Yes"){
+        if(secondFieldText.match(/\b[a-zA-Z.,]+\s[a-zA-Z.,]+\b/)){
+          setValidForm(true);
+        }else{
+          setValidForm(false);
+        }
+      }else{
+        setValidForm(true);
+      }
+    }else{
+      setValidForm(false);
+    }
+  }
 
   let content = (
     <Container maxWidth="xs">
@@ -108,7 +129,7 @@ const RSVP = () => {
             <TextField
               fullWidth
               required
-              label="First and Last Name"
+              label="Your First and Last Name"
               variant="outlined"
               color="secondary"
               value={name}
@@ -135,9 +156,22 @@ const RSVP = () => {
                 fullWidth
               >
                 <ToggleButton value="Yes">I'm using my +1</ToggleButton>
-                <ToggleButton value="No">I'm Flying Solo</ToggleButton>
+                <ToggleButton value="No">It's just me</ToggleButton>
               </ToggleButtonGroup>
             </StyledGridItem>
+          )}
+          {response === "Accept" && plusOne === "Yes" && !plusOneLocked && (
+            <Grid item>
+              <TextField
+                fullWidth
+                required
+                label="First and Last Name"
+                variant="outlined"
+                color="secondary"
+                value={plusOneName}
+                onChange={handlePlusOneName}
+              />
+            </Grid>
           )}
           {response === "Accept" && (
             <Grid item>
@@ -153,7 +187,12 @@ const RSVP = () => {
           )}
 
           <Grid item>
-            <Button fullWidth variant="contained" color="secondary" disabled={!validForm}>
+            <Button
+              fullWidth
+              variant="contained"
+              color="secondary"
+              disabled={!validForm}
+            >
               Submit
             </Button>
           </Grid>

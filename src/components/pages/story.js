@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { styled } from "@mui/material/styles";
 import { Card, Container, Grid, Paper, Typography } from "@mui/material";
 import ReactCardFlip from "react-card-flip";
+import Map from "../../images/map.png";
 
 const CardBack = styled("div")({
   display: "flex",
@@ -20,6 +21,20 @@ const CardFront = styled("div")(({ theme }) => ({
   color: "white",
   padding: "25px",
 }));
+
+const ImgContainer = styled("div")({
+  paddingTop: "30px",
+});
+
+const ImgStyled = styled("img")({
+  maxHeight: "100%",
+  maxWidth: "100%",
+  borderRadius: "5px",
+});
+
+const CardContainer = styled(Grid)({
+  paddingTop: "75px"
+})
 
 const Story = () => {
   const [cards, setCards] = useState([
@@ -56,12 +71,24 @@ const Story = () => {
 
   let content = (
     <Container maxWidth="lg">
-      <Grid container spacing={2}>
+      <Grid container>
+        <Grid item xs={12}>
+          <ImgContainer>
+            <ImgStyled src={Map} />
+          </ImgContainer>
+        </Grid>
+        <Grid item xs={12}>
+          <Typography variant="h4" align="center">Our Story (Abridged)</Typography>
+          <Container maxWidth="md">
+          <Typography variant="body"></Typography>
+          </Container>
+        </Grid>
+      </Grid>
+      <CardContainer container spacing={2}>
         <Grid item lg={3} xs={6}>
           <CardBack>
             <Grid container direction="column" justifyContent="center">
-              <Typography variant="h4">Pop Quiz</Typography>
-              <Typography> How well do you know us?</Typography>
+              <Typography variant="h4" align="center"> How well do you know us?</Typography>
             </Grid>
           </CardBack>
         </Grid>
@@ -73,7 +100,9 @@ const Story = () => {
               onMouseOut={() => handleRaised(0)}
               raised={cardsRaised[0]}
             >
-              <CardFront>Where did we first meet? (Before we started dating)</CardFront>
+              <CardFront>
+                Where did we first meet? (Before we started dating)
+              </CardFront>
             </Card>
             <Card onClick={() => handleFlip(0)}>
               <CardBack>Biology class, freshman year of high school.</CardBack>
@@ -170,7 +199,7 @@ const Story = () => {
             </Card>
           </ReactCardFlip>
         </Grid>
-      </Grid>
+      </CardContainer>
     </Container>
   );
   return content;

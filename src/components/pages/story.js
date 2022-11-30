@@ -24,6 +24,9 @@ const CardFront = styled("div")(({ theme }) => ({
 
 const ImgContainer = styled("div")({
   paddingTop: "30px",
+  width: "100%",
+  display: "flex",
+  justifyContent: "center"
 });
 
 const ImgStyled = styled("img")({

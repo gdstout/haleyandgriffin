@@ -26,7 +26,7 @@ const ImgContainer = styled("div")({
   paddingTop: "30px",
   width: "100%",
   display: "flex",
-  justifyContent: "center"
+  justifyContent: "center",
 });
 
 const ImgStyled = styled("img")({
@@ -36,8 +36,8 @@ const ImgStyled = styled("img")({
 });
 
 const CardContainer = styled(Grid)({
-  paddingTop: "75px"
-})
+  paddingTop: "75px",
+});
 
 const Story = () => {
   const [cards, setCards] = useState([
@@ -74,16 +74,33 @@ const Story = () => {
 
   let content = (
     <Container maxWidth="lg">
-      <Grid container>
+      <Grid container spacing={2}>
         <Grid item xs={12}>
           <ImgContainer>
             <ImgStyled src={Map} />
           </ImgContainer>
         </Grid>
         <Grid item xs={12}>
-          <Typography variant="h4" align="center">Our Story (Abridged)</Typography>
+          <Typography variant="h4" align="center">
+            Our Story (Abridged)
+          </Typography>
+        </Grid>
+        <Grid item xs={12}>
           <Container maxWidth="md">
-          <Typography variant="body"></Typography>
+            <Typography variant="h6">
+              From Overland Park, KS to Arlington, VA, our story spans thousands
+              of miles and nearly ten years. We became close friends sitting
+              together in junior year Spanish class, and after a short summer of{" "}
+              <em>the friendzone</em>, started dating. When graduation came, we
+              chose different colleges and decided to try long the dreaded long
+              distance; Haley at Alabama and Griffin at Iowa State. Four years
+              of Facetime, insomnia cookies, long flights, and a couple of
+              degrees later, we landed in Virginia. Along the way, we visited
+              each other and made amazing memories; Alabama football games,
+              freezing walks across the Iowa State campus, Greek life formals, a
+              summer in Colorado. Now we live together in Arlington and can't
+              wait to make more.
+            </Typography>
           </Container>
         </Grid>
       </Grid>
@@ -91,7 +108,10 @@ const Story = () => {
         <Grid item lg={3} xs={6}>
           <CardBack>
             <Grid container direction="column" justifyContent="center">
-              <Typography variant="h4" align="center"> How well do you know us?</Typography>
+              <Typography variant="h4" align="center">
+                {" "}
+                How well do you know us?
+              </Typography>
             </Grid>
           </CardBack>
         </Grid>
@@ -108,7 +128,9 @@ const Story = () => {
               </CardFront>
             </Card>
             <Card onClick={() => handleFlip(0)}>
-              <CardBack>Biology class, freshman year of high school.</CardBack>
+              <CardBack>
+                Biology class, freshman year of high school (2013).
+              </CardBack>
             </Card>
           </ReactCardFlip>
         </Grid>

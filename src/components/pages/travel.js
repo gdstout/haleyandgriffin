@@ -3,7 +3,7 @@ import { styled } from "@mui/system";
 import { Button, Container, Divider, Grid, Typography } from "@mui/material";
 import PinDropIcon from "@mui/icons-material/PinDrop";
 import LocalPhoneIcon from "@mui/icons-material/LocalPhone";
-import InfoIcon from '@mui/icons-material/Info';
+import InfoIcon from "@mui/icons-material/Info";
 import InfoOutlinedIcon from "@mui/icons-material/InfoOutlined";
 import SellIcon from "@mui/icons-material/Sell";
 import FlightIcon from "@mui/icons-material/Flight";
@@ -13,6 +13,9 @@ import LocalDiningIcon from "@mui/icons-material/LocalDining";
 import { GoogleMap, useJsApiLoader, Marker } from "@react-google-maps/api";
 
 import HawthorneHouse from "../../images/hawthornehouse1.jpg";
+import UnionStation from "../../images/union_station.jpg";
+import LibertyMemorial from "../../images/liberty_memorial.jpg";
+import PowerAndLightDistrict from "../../images/power_and_light_district.jpg";
 
 const locations = {
   default: {
@@ -45,18 +48,21 @@ const locations = {
     zoom: 15,
     marker: true,
     mapsUrl: "https://goo.gl/maps/7ap1pntvoxKriht29",
+    img: UnionStation,
   },
   libertyMemorial: {
     latlng: { lat: 39.080663, lng: -94.5860835 },
     zoom: 15,
     marker: true,
     mapsUrl: "https://goo.gl/maps/KUkBD8berNccEGL67",
+    img: LibertyMemorial
   },
   powerAndLightDistrict: {
     latlng: { lat: 39.0987792, lng: -94.5825043 },
     zoom: 15,
     marker: true,
     mapsUrl: "https://goo.gl/maps/RwYXy8n4nVPSZgHp6",
+    img: PowerAndLightDistrict,
   },
   nelsonAtkins: {
     latlng: { lat: 39.0449506, lng: -94.58092839999999 },
@@ -145,7 +151,7 @@ const Travel = () => {
     window.scroll({
       top: 0,
       left: 0,
-      behavior: "smooth"
+      behavior: "smooth",
     });
   };
 
@@ -226,8 +232,12 @@ const Travel = () => {
               <Grid item xs={12} />
               <Grid item xs={12}>
                 <Typography variant="body1">
-                  Located in Parkville, MO, this blah blah blah blah blah blah
-                  asdlasjd alskjdasdj.
+                  The Hawthorne House is a ~20 minute drive from downtown KC, or
+                  a ~40 minute drive from South Overland Park.{" "}
+                  <strong>
+                    Parking is free, and you may leave your car overnight if
+                    necessary.
+                  </strong>
                 </Typography>
               </Grid>
             </Grid>
@@ -236,7 +246,7 @@ const Travel = () => {
         <Grid item xs={12} lg={4}>
           <Grid item xs={12}>
             <Typography variant="h5">
-              <strong>Marriott Downtown KC</strong>
+              <strong>Hotel Block</strong>
             </Typography>
           </Grid>
           <InfoWrapper>

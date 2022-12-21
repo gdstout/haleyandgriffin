@@ -89,8 +89,8 @@ const Story = () => {
           <Container maxWidth="md">
             <Typography variant="h6">
               From Overland Park, KS to Arlington, VA, our story spans thousands
-              of miles and nearly ten years. We became close friends sitting
-              together in junior year Spanish class, and after a short summer of{" "}
+              of miles and nearly ten years. We became close friends in high school sitting
+              together in Spanish class, and after a short summer of{" "}
               <em>the friendzone</em>, started dating. When graduation came, we
               chose different colleges and decided to try long the dreaded long
               distance; Haley at Alabama and Griffin at Iowa State. Four years

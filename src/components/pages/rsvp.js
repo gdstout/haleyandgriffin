@@ -61,6 +61,9 @@ const RSVP = () => {
 
   const handleResponse = (e) => {
     setResponse(e.target.value);
+    if(e.target.value === "Decline"){
+      setPlusOne("No");
+    }
   };
 
   const handlePlusOne = (e) => {
@@ -166,6 +169,7 @@ const RSVP = () => {
                 fullWidth
                 required
                 label="First and Last Name"
+                helperText="We need a name for placecards at the reception!"
                 variant="outlined"
                 color="secondary"
                 value={plusOneName}

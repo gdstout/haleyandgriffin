@@ -106,12 +106,13 @@ const Details = () => {
               <Grid item xs={12} />
               <Grid item xs={12}>
                 <Typography variant="body1">
-                  Dressed in gold Italian crystal chandeliers, cathedral
-                  ceilings, hardwood floors and windows on all sides, the
-                  Emerson Room is the perfect place to host your event! In our
-                  reception packages, we include the set up and tear down of our
-                  in house tables, chairs with cushions and floor length linens
-                  to help create a stress-free day.
+                  Sitting just north of beautifully quaint Parkville, Missouri,
+                  this chapel and event space is perfect for our wedding day.
+                  With the ever-changing weather of the Kansas City area, the quick 50
+                  yard walk from ceremony to reception will lend itself to any
+                  condition. In the case of a pleasant fall day, the sprawling lawn
+                  and covered deck of the reception hall will be a wonderful
+                  place to enjoy a cocktail before the reception starts.
                 </Typography>
               </Grid>
             </Grid>
@@ -122,7 +123,7 @@ const Details = () => {
       <Grid
         container
         direction="row-reverse"
-        justifyContent="flext-start"
+        justifyContent="flex-start"
         alignItems="flex-start"
         spacing={3}
       >
@@ -132,7 +133,8 @@ const Details = () => {
               <Typography variant="h4">Nov. 17th Timeline</Typography>
             </Grid>
             <Grid item xs={12}>
-              <WeddingTimeline />
+              <Typography>Please check back when you get an invitation to see our timeline!</Typography>
+              {/*<WeddingTimeline />*/}
             </Grid>
           </Grid>
         </Grid>

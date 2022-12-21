@@ -47,6 +47,10 @@ const WeddingParty = () => {
             <ImgStyled src={Sprig1} />
             <Typography variant="h5">Logan Van Reken</Typography>
             <Typography>Bridesmaid</Typography>
+
+            <ImgStyled src={Sprig1} />
+            <Typography variant="h5">Lea Sophie Pfifer</Typography>
+            <Typography>Bridesmaid</Typography>
           </Grid>
         </Grid>
         <Grid item xs={6}>

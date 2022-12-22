@@ -26,6 +26,7 @@ const locations = {
     zoom: 11,
     marker: false,
     mapsUrl: "",
+    img: UnionStation
   },
   hawthorneHouse: {
     latlng: { lat: 39.2039303, lng: -94.68936889999999 },

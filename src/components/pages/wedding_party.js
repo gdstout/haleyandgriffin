@@ -3,11 +3,16 @@ import { styled } from "@mui/material/styles";
 import React from "react";
 
 import Sprig1 from "../../images/sprig1.png";
+import MG from "../../images/mg.png";
+import Dean from "../../images/dean.png";
+import Carter from "../../images/carter.png";
+import Kyle from "../../images/kyle.png";
+import Evan from "../../images/evan.png";
 
 const ImgStyled = styled("img")({
   width: "65%",
   paddingBottom: "10px",
-  paddingTop: "40px"
+  paddingTop: "40px",
 });
 
 const WeddingParty = () => {
@@ -20,7 +25,7 @@ const WeddingParty = () => {
             <Typography variant="h5">Laura Kaupe</Typography>
             <Typography>Maid of Honor</Typography>
 
-            <ImgStyled src={Sprig1} />
+            <ImgStyled src={MG} />
             <Typography variant="h5">MG Burton</Typography>
             <Typography>Bridesmaid</Typography>
 
@@ -55,15 +60,15 @@ const WeddingParty = () => {
         </Grid>
         <Grid item xs={6}>
           <Grid container direction="column" alignItems="center">
-            <ImgStyled src={Sprig1} />
+            <ImgStyled src={Dean} />
             <Typography variant="h5">Dean Wilcox</Typography>
             <Typography>Best Man</Typography>
 
-            <ImgStyled src={Sprig1} />
+            <ImgStyled src={Carter} />
             <Typography variant="h5">Carter Stout</Typography>
             <Typography>Groomsman</Typography>
 
-            <ImgStyled src={Sprig1} />
+            <ImgStyled src={Evan} />
             <Typography variant="h5">Evan Stout</Typography>
             <Typography>Groomsman</Typography>
 
@@ -75,7 +80,7 @@ const WeddingParty = () => {
             <Typography variant="h5">Sam Talkington</Typography>
             <Typography>Groomsman</Typography>
 
-            <ImgStyled src={Sprig1} />
+            <ImgStyled src={Kyle} />
             <Typography variant="h5">Kyle Marek</Typography>
             <Typography>Groomsman</Typography>
 

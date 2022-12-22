@@ -13,9 +13,12 @@ import LocalDiningIcon from "@mui/icons-material/LocalDining";
 import { GoogleMap, useJsApiLoader, Marker } from "@react-google-maps/api";
 
 import HawthorneHouse from "../../images/hawthornehouse1.jpg";
+import MCIAirport from "../../images/mci_airport.jpg";
 import UnionStation from "../../images/union_station.jpg";
 import LibertyMemorial from "../../images/liberty_memorial.jpg";
 import PowerAndLightDistrict from "../../images/power_and_light_district.jpg";
+import NelsonAtkins from "../../images/nelson_atkins.jpg";
+import JackStack from "../../images/jack_stack.jpg";
 
 const locations = {
   default: {
@@ -42,6 +45,7 @@ const locations = {
     zoom: 11,
     marker: true,
     mapsUrl: "https://g.page/KCIAirport?share",
+    img: MCIAirport
   },
   unionStation: {
     latlng: { lat: 39.0860073, lng: -94.58586059999999 },
@@ -69,12 +73,14 @@ const locations = {
     zoom: 15,
     marker: true,
     mapsUrl: "https://goo.gl/maps/rNBasMhRcLpGe4hP7",
+    img: NelsonAtkins
   },
   jackStack: {
     latlng: { lat: 39.08741, lng: -94.5852962 },
     zoom: 15,
     marker: true,
     mapsUrl: "https://goo.gl/maps/DhYXHQYrAH44jPQc7",
+    img: JackStack,
   },
 };
 

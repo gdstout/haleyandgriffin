@@ -37,6 +37,7 @@ const ImgStyled = styled("img")({
 
 const CardContainer = styled(Grid)({
   paddingTop: "75px",
+  paddingBottom: "25px",
 });
 
 const Story = () => {
@@ -89,12 +90,12 @@ const Story = () => {
           <Container maxWidth="md">
             <Typography variant="h6">
               From Overland Park, KS to Arlington, VA, our story spans thousands
-              of miles and nearly ten years. We became close friends in high school sitting
-              together in Spanish class, and after a short summer of{" "}
-              <em>the friendzone</em>, started dating. When graduation came, we
-              chose different colleges and decided to try long the dreaded long
-              distance; Haley at Alabama and Griffin at Iowa State. Four years
-              of Facetime, insomnia cookies, long flights, and a couple of
+              of miles and nearly ten years. We became close friends in high
+              school sitting together in Spanish class, and after a short summer
+              of <em>the friendzone</em>, started dating. When graduation came,
+              we chose different colleges and decided to try long the dreaded
+              long distance; Haley at Alabama and Griffin at Iowa State. Four
+              years of Facetime, insomnia cookies, long flights, and a couple of
               degrees later, we landed in Virginia. Along the way, we visited
               each other and made amazing memories; Alabama football games,
               freezing walks across the Iowa State campus, Greek life formals, a
@@ -172,10 +173,10 @@ const Story = () => {
               onMouseOut={() => handleRaised(3)}
               raised={cardsRaised[3]}
             >
-              <CardFront>Hello</CardFront>
+              <CardFront>What is our favorite Arlington /DC Spot?</CardFront>
             </Card>
             <Card onClick={() => handleFlip(3)}>
-              <CardBack>Hello</CardBack>
+              <CardBack>O'Sullivan's Irish Pub</CardBack>
             </Card>
           </ReactCardFlip>
         </Grid>
@@ -187,10 +188,10 @@ const Story = () => {
               onMouseOut={() => handleRaised(4)}
               raised={cardsRaised[4]}
             >
-              <CardFront>Hello</CardFront>
+              <CardFront>What is our song?</CardFront>
             </Card>
             <Card onClick={() => handleFlip(4)}>
-              <CardBack>Hello</CardBack>
+              <CardBack>Vienna</CardBack>
             </Card>
           </ReactCardFlip>
         </Grid>
@@ -202,10 +203,10 @@ const Story = () => {
               onMouseOut={() => handleRaised(5)}
               raised={cardsRaised[5]}
             >
-              <CardFront>Hello</CardFront>
+              <CardFront>Who is the tidiest?</CardFront>
             </Card>
             <Card onClick={() => handleFlip(5)}>
-              <CardBack>Hello</CardBack>
+              <CardBack>Haley (or so she claims)</CardBack>
             </Card>
           </ReactCardFlip>
         </Grid>
@@ -217,10 +218,16 @@ const Story = () => {
               onMouseOut={() => handleRaised(6)}
               raised={cardsRaised[6]}
             >
-              <CardFront>Hello</CardFront>
+              <CardFront>
+                If we could travel anywhere in the world, where would we go?
+              </CardFront>
             </Card>
             <Card onClick={() => handleFlip(6)}>
-              <CardBack>Hello</CardBack>
+              <CardBack>
+                Haley: Paris
+                <br />
+                Griffin: Patagonia and Tierra Del Fuego
+              </CardBack>
             </Card>
           </ReactCardFlip>
         </Grid>

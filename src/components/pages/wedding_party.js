@@ -14,12 +14,19 @@ import Carson from "../../images/carson.png";
 import Taylor from "../../images/taylor.png";
 import Tara from "../../images/tara.png";
 import Alex from "../../images/alex.png";
+import Will from "../../images/will.png";
+import Sam from "../../images/sam.png";
 
-const ImgStyled = styled("img")({
-  width: "65%",
+const ImgStyled = styled("img")(({ theme }) => ({
+  [theme.breakpoints.up("lg")]: {
+    width: "75%",
+  },
+  [theme.breakpoints.down("lg")]: {
+    width: "95%",
+  },
   paddingBottom: "10px",
   paddingTop: "40px",
-});
+}));
 
 const WeddingParty = () => {
   let content = (
@@ -82,7 +89,7 @@ const WeddingParty = () => {
             <Typography variant="h5">Alex Seager</Typography>
             <Typography>Groomsman</Typography>
 
-            <ImgStyled src={Sprig1} />
+            <ImgStyled src={Sam} />
             <Typography variant="h5">Sam Talkington</Typography>
             <Typography>Groomsman</Typography>
 
@@ -98,7 +105,7 @@ const WeddingParty = () => {
             <Typography variant="h5">Austin Roy</Typography>
             <Typography>Groomsman</Typography>
 
-            <ImgStyled src={Sprig1} />
+            <ImgStyled src={Will} />
             <Typography variant="h5">Will Shatto</Typography>
             <Typography>Groomsman</Typography>
           </Grid>

@@ -173,7 +173,7 @@ const Story = () => {
               onMouseOut={() => handleRaised(3)}
               raised={cardsRaised[3]}
             >
-              <CardFront>What is our favorite Arlington /DC Spot?</CardFront>
+              <CardFront>What is our favorite Arlington / DC Spot?</CardFront>
             </Card>
             <Card onClick={() => handleFlip(3)}>
               <CardBack>O'Sullivan's Irish Pub</CardBack>
@@ -191,7 +191,7 @@ const Story = () => {
               <CardFront>What is our song?</CardFront>
             </Card>
             <Card onClick={() => handleFlip(4)}>
-              <CardBack>Vienna</CardBack>
+              <CardBack>Vienna, Billy Joel</CardBack>
             </Card>
           </ReactCardFlip>
         </Grid>

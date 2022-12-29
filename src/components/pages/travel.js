@@ -296,7 +296,7 @@ const Travel = () => {
                   </InfoLineItem>
                   <InfoLineItem2>
                     <StyledLink
-                      href="tel:+18164216800"
+                      href="tel"
                       target="_blank"
                       rel="noreferrer"
                     >

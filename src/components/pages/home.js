@@ -1,6 +1,7 @@
 import React from "react";
-import { Container, Grid, Typography } from "@mui/material";
+import { Container, Grid, Typography, useTheme, useMediaQuery } from "@mui/material";
 import { styled } from "@mui/material/styles";
+import { NavLink } from "react-router-dom";
 import Smiley from "../../images/smiley.jpg";
 
 const ImgContainer = styled("div")({
@@ -13,7 +14,18 @@ const ImgStyled = styled("img")({
   borderRadius: "5px",
 });
 
+const PageLink = styled(NavLink)(({ theme }) => ({
+  textDecoration: "underline rgba(0, 0, 0, 0)",
+  color: theme.palette.secondary.main,
+  transition: "text-decoration-color 500ms",
+  "&:hover": {
+    color: "#000000",
+    textDecorationColor: "rgba(0, 0, 0, 1)",
+  },
+}));
+
 const Home = () => {
+  const theme = useTheme();
   let content = (
     <Container maxWidth="lg">
       <Grid container justifyContent="center" spacing={2} direction="column">
@@ -36,10 +48,25 @@ const Home = () => {
             <Typography variant="h6">
               Welcome to our wedding website! Thanks for helping us celebrate
               our special day; we really appreciate it. Please visit the various
-              pages to find out more about us, get day-of information, RSVP, and more!
+              pages to find out more about us, get day-of information, RSVP, and
+              more!
             </Typography>
           </Container>
         </Grid>
+        {!useMediaQuery(theme.breakpoints.up("lg")) && (
+        <Grid item>
+          <Typography variant="h4" align="center">
+            Quick Links
+          </Typography>
+          <Typography align="center" variant="h6">
+            <PageLink to="/details">Details</PageLink>
+            <br />
+            <PageLink to="/registry">Registry</PageLink>
+            <br />
+            <PageLink to="/rsvp">RSVP</PageLink>
+          </Typography>
+        </Grid>
+)}
       </Grid>
     </Container>
   );

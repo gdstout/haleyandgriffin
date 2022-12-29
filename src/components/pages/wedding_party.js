@@ -8,6 +8,12 @@ import Dean from "../../images/dean.png";
 import Carter from "../../images/carter.png";
 import Kyle from "../../images/kyle.png";
 import Evan from "../../images/evan.png";
+import Izzy from "../../images/izzy.png";
+import Logan from "../../images/logan.png";
+import Carson from "../../images/carson.png";
+import Taylor from "../../images/taylor.png";
+import Tara from "../../images/tara.png";
+import Alex from "../../images/alex.png";
 
 const ImgStyled = styled("img")({
   width: "65%",
@@ -29,7 +35,7 @@ const WeddingParty = () => {
             <Typography variant="h5">MG Burton</Typography>
             <Typography>Bridesmaid</Typography>
 
-            <ImgStyled src={Sprig1} />
+            <ImgStyled src={Tara} />
             <Typography variant="h5">Tara Reddy</Typography>
             <Typography>Bridesmaid</Typography>
 
@@ -37,19 +43,19 @@ const WeddingParty = () => {
             <Typography variant="h5">Emily DeFoor</Typography>
             <Typography>Bridesmaid</Typography>
 
-            <ImgStyled src={Sprig1} />
+            <ImgStyled src={Taylor} />
             <Typography variant="h5">Taylor DeFoor</Typography>
             <Typography>Bridesmaid</Typography>
 
-            <ImgStyled src={Sprig1} />
+            <ImgStyled src={Carson} />
             <Typography variant="h5">Carson DeFoor</Typography>
             <Typography>Bridesmaid</Typography>
 
-            <ImgStyled src={Sprig1} />
+            <ImgStyled src={Izzy} />
             <Typography variant="h5">Izzy Simoneaux</Typography>
             <Typography>Bridesmaid</Typography>
 
-            <ImgStyled src={Sprig1} />
+            <ImgStyled src={Logan} />
             <Typography variant="h5">Logan Van Reken</Typography>
             <Typography>Bridesmaid</Typography>
 
@@ -72,7 +78,7 @@ const WeddingParty = () => {
             <Typography variant="h5">Evan Stout</Typography>
             <Typography>Groomsman</Typography>
 
-            <ImgStyled src={Sprig1} />
+            <ImgStyled src={Alex} />
             <Typography variant="h5">Alex Seager</Typography>
             <Typography>Groomsman</Typography>
 

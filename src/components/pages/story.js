@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { styled } from "@mui/material/styles";
-import { Card, Container, Grid, Paper, Typography } from "@mui/material";
+import { Card, Container, Grid, Typography } from "@mui/material";
 import ReactCardFlip from "react-card-flip";
 import Map from "../../images/map.png";
 
@@ -82,8 +82,8 @@ const Story = () => {
           </ImgContainer>
         </Grid>
         <Grid item xs={12}>
-          <Typography variant="h4" align="center">
-            Our Story (Abridged)
+          <Typography variant="h3" align="center">
+            OUR STORY
           </Typography>
         </Grid>
         <Grid item xs={12}>
@@ -125,12 +125,12 @@ const Story = () => {
               raised={cardsRaised[0]}
             >
               <CardFront>
-                Where did we first meet? (Before we started dating)
+                <Typography align="center">Where did we first meet? (Before we started dating)</Typography>
               </CardFront>
             </Card>
             <Card onClick={() => handleFlip(0)}>
               <CardBack>
-                Biology class, freshman year of high school (2013).
+              <Typography align="center">Biology class, freshman year of high school (2013).</Typography>
               </CardBack>
             </Card>
           </ReactCardFlip>
@@ -143,10 +143,10 @@ const Story = () => {
               onMouseOut={() => handleRaised(1)}
               raised={cardsRaised[1]}
             >
-              <CardFront>How long have we been dating?</CardFront>
+              <CardFront><Typography align="center">How long have we been dating?</Typography></CardFront>
             </Card>
             <Card onClick={() => handleFlip(1)}>
-              <CardBack>6 years and counting!</CardBack>
+              <CardBack><Typography align="center">6 years and counting!</Typography></CardBack>
             </Card>
           </ReactCardFlip>
         </Grid>
@@ -158,10 +158,10 @@ const Story = () => {
               onMouseOut={() => handleRaised(2)}
               raised={cardsRaised[2]}
             >
-              <CardFront>Where did we get engaged?</CardFront>
+              <CardFront><Typography align="center">Where did we get engaged?</Typography></CardFront>
             </Card>
             <Card onClick={() => handleFlip(2)}>
-              <CardBack>Great Falls National Park in Virginia</CardBack>
+              <CardBack><Typography align="center">Great Falls National Park in Virginia</Typography></CardBack>
             </Card>
           </ReactCardFlip>
         </Grid>
@@ -173,10 +173,10 @@ const Story = () => {
               onMouseOut={() => handleRaised(3)}
               raised={cardsRaised[3]}
             >
-              <CardFront>What is our favorite Arlington / DC Spot?</CardFront>
+              <CardFront><Typography align="center">What is our favorite Arlington / DC Spot?</Typography></CardFront>
             </Card>
             <Card onClick={() => handleFlip(3)}>
-              <CardBack>O'Sullivan's Irish Pub</CardBack>
+              <CardBack><Typography align="center">O'Sullivan's Irish Pub</Typography></CardBack>
             </Card>
           </ReactCardFlip>
         </Grid>
@@ -188,10 +188,10 @@ const Story = () => {
               onMouseOut={() => handleRaised(4)}
               raised={cardsRaised[4]}
             >
-              <CardFront>What is our song?</CardFront>
+              <CardFront><Typography align="center">What is our song?</Typography></CardFront>
             </Card>
             <Card onClick={() => handleFlip(4)}>
-              <CardBack>Vienna, Billy Joel</CardBack>
+              <CardBack><Typography align="center">Vienna, Billy Joel</Typography></CardBack>
             </Card>
           </ReactCardFlip>
         </Grid>
@@ -203,10 +203,10 @@ const Story = () => {
               onMouseOut={() => handleRaised(5)}
               raised={cardsRaised[5]}
             >
-              <CardFront>Who is the tidiest?</CardFront>
+              <CardFront><Typography align="center">Who is the tidiest?</Typography></CardFront>
             </Card>
             <Card onClick={() => handleFlip(5)}>
-              <CardBack>Haley (or so she claims)</CardBack>
+              <CardBack><Typography align="center">Haley (or so she claims)</Typography></CardBack>
             </Card>
           </ReactCardFlip>
         </Grid>
@@ -219,14 +219,14 @@ const Story = () => {
               raised={cardsRaised[6]}
             >
               <CardFront>
-                If we could travel anywhere in the world, where would we go?
+              <Typography align="center">If we could travel anywhere in the world, where would we go?</Typography>
               </CardFront>
             </Card>
             <Card onClick={() => handleFlip(6)}>
               <CardBack>
-                Haley: Paris
+              <Typography align="center">Haley: Paris
                 <br />
-                Griffin: Patagonia and Tierra Del Fuego
+                Griffin: Patagonia and Tierra Del Fuego</Typography>
               </CardBack>
             </Card>
           </ReactCardFlip>

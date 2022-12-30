@@ -34,19 +34,19 @@ const WeddingParty = () => {
       <Grid container direction="row">
         <Grid item xs={6}>
           <Grid container direction="column" alignItems="center">
-            <ImgStyled src={Sprig1} />
+            <ImgStyled src={MG} />
             <Typography variant="h5">Laura Kaupe</Typography>
             <Typography>Maid of Honor</Typography>
 
             <ImgStyled src={MG} />
-            <Typography variant="h5">MG Burton</Typography>
+            <Typography variant="h5">Mary Grace Burton</Typography>
             <Typography>Bridesmaid</Typography>
 
             <ImgStyled src={Tara} />
             <Typography variant="h5">Tara Reddy</Typography>
             <Typography>Bridesmaid</Typography>
 
-            <ImgStyled src={Sprig1} />
+            <ImgStyled src={MG} />
             <Typography variant="h5">Emily DeFoor</Typography>
             <Typography>Bridesmaid</Typography>
 
@@ -59,16 +59,16 @@ const WeddingParty = () => {
             <Typography>Bridesmaid</Typography>
 
             <ImgStyled src={Izzy} />
-            <Typography variant="h5">Izzy Simoneaux</Typography>
+            <Typography variant="h5">Isabelle Simoneaux</Typography>
             <Typography>Bridesmaid</Typography>
 
             <ImgStyled src={Logan} />
-            <Typography variant="h5">Logan Van Reken</Typography>
+            <Typography variant="h5">Logan van Reken</Typography>
             <Typography>Bridesmaid</Typography>
 
-            <ImgStyled src={Sprig1} />
+            {/*<ImgStyled src={Sprig1} />
             <Typography variant="h5">Lea Sophie Pfifer</Typography>
-            <Typography>Bridesmaid</Typography>
+  <Typography>Bridesmaid</Typography>*/}
           </Grid>
         </Grid>
         <Grid item xs={6}>
@@ -85,6 +85,10 @@ const WeddingParty = () => {
             <Typography variant="h5">Evan Stout</Typography>
             <Typography>Groomsman</Typography>
 
+            <ImgStyled src={Will} />
+            <Typography variant="h5">Will Shatto</Typography>
+            <Typography>Groomsman</Typography>
+
             <ImgStyled src={Alex} />
             <Typography variant="h5">Alex Seager</Typography>
             <Typography>Groomsman</Typography>
@@ -97,17 +101,13 @@ const WeddingParty = () => {
             <Typography variant="h5">Kyle Marek</Typography>
             <Typography>Groomsman</Typography>
 
-            <ImgStyled src={Sprig1} />
+            <ImgStyled src={Kyle} />
             <Typography variant="h5">Michael Davis</Typography>
             <Typography>Groomsman</Typography>
 
-            <ImgStyled src={Sprig1} />
+            {/*<ImgStyled src={Sprig1} />
             <Typography variant="h5">Austin Roy</Typography>
-            <Typography>Groomsman</Typography>
-
-            <ImgStyled src={Will} />
-            <Typography variant="h5">Will Shatto</Typography>
-            <Typography>Groomsman</Typography>
+  <Typography>Groomsman</Typography>*/}
           </Grid>
         </Grid>
       </Grid>

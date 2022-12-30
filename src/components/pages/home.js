@@ -37,7 +37,7 @@ const Home = () => {
 
         <Grid item>
           <Typography variant="h2" align="center">
-            November 2023
+            NOVEMBER 2023
           </Typography>
           <Typography variant="h6" align="center">
             Parkville, MO
@@ -45,7 +45,7 @@ const Home = () => {
         </Grid>
         <Grid item>
           <Container maxWidth="md">
-            <Typography variant="h6">
+            <Typography variant="h6" align="center">
               Welcome to our wedding website! Thanks for helping us celebrate
               our special day; we really appreciate it. Please visit the various
               pages to find out more about us, get day-of information, RSVP, and
@@ -55,14 +55,12 @@ const Home = () => {
         </Grid>
         {!useMediaQuery(theme.breakpoints.up("lg")) && (
         <Grid item>
-          <Typography variant="h4" align="center">
-            Quick Links
-          </Typography>
+          <br/>
           <Typography align="center" variant="h6">
-            <PageLink to="/details">Details</PageLink>
-            <br />
-            <PageLink to="/registry">Registry</PageLink>
-            <br />
+            <PageLink to="/details">DETAILS</PageLink>
+            {" • "}
+            <PageLink to="/registry">REGISTRY</PageLink>
+            {" • "}
             <PageLink to="/rsvp">RSVP</PageLink>
           </Typography>
         </Grid>

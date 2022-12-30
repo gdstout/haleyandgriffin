@@ -74,7 +74,7 @@ const Details = () => {
                     <CalendarTodayIcon color="secondary" />
                   </InfoLineItem>
                   <InfoLineItem2>
-                    <Typography>November 17th, 2023</Typography>
+                    <Typography>November, 2023</Typography>
                   </InfoLineItem2>
                 </InfoLine>
               </Grid>
@@ -130,7 +130,7 @@ const Details = () => {
         <Grid item xs={12} lg={4}>
           <Grid container justifyContent="center">
             <Grid item xs={12}>
-              <Typography variant="h4">Nov. 17th Timeline</Typography>
+              <Typography variant="h4">Timeline</Typography>
             </Grid>
             <Grid item xs={12}>
               <Typography>Please check back when you get an invitation to see our timeline!</Typography>

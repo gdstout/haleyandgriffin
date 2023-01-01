@@ -39,7 +39,7 @@ const WeddingParty = () => {
             <Typography>Maid of Honor</Typography>
 
             <ImgStyled src={MG} />
-            <Typography variant="h5">Mary Grace Burton</Typography>
+            <Typography variant="h5">MG Burton</Typography>
             <Typography>Bridesmaid</Typography>
 
             <ImgStyled src={Tara} />
@@ -59,7 +59,7 @@ const WeddingParty = () => {
             <Typography>Bridesmaid</Typography>
 
             <ImgStyled src={Izzy} />
-            <Typography variant="h5">Isabelle Simoneaux</Typography>
+            <Typography variant="h5">Izzy Simoneaux</Typography>
             <Typography>Bridesmaid</Typography>
 
             <ImgStyled src={Logan} />

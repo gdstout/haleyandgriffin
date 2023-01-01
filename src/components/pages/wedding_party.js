@@ -16,6 +16,7 @@ import Tara from "../../images/tara.png";
 import Alex from "../../images/alex.png";
 import Will from "../../images/will.png";
 import Sam from "../../images/sam.png";
+import Laura from "../../images/laura.png";
 
 const ImgStyled = styled("img")(({ theme }) => ({
   [theme.breakpoints.up("lg")]: {
@@ -34,7 +35,7 @@ const WeddingParty = () => {
       <Grid container direction="row">
         <Grid item xs={6}>
           <Grid container direction="column" alignItems="center">
-            <ImgStyled src={MG} />
+            <ImgStyled src={Laura} />
             <Typography variant="h5">Laura Kaupe</Typography>
             <Typography>Maid of Honor</Typography>
 

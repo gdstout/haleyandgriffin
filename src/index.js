@@ -21,6 +21,14 @@ let theme = createTheme({
     },
   },
   typography: {
+    h1: {
+      fontFamily: "Prata",
+      fontSize: "4.5em"
+    },
+    h2: {
+      fontFamily: "Prata",
+      fontSize: "3.5em"
+    },
     h3: {
       fontFamily: "Playfair Display",
     },

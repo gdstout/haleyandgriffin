@@ -89,18 +89,20 @@ const Story = () => {
         <Grid item xs={12}>
           <Container maxWidth="md">
             <Typography variant="h6">
-              From Overland Park, KS to Arlington, VA, our story spans thousands
-              of miles and nearly ten years. We became close friends in high
-              school sitting together in Spanish class, and after a short summer
-              of <em>the friendzone</em>, started dating. When graduation came,
-              we chose different colleges and decided to try long the dreaded
-              long distance; Haley at Alabama and Griffin at Iowa State. Four
-              years of Facetime, insomnia cookies, long flights, and a couple of
-              degrees later, we landed in Virginia. Along the way, we visited
-              each other and made amazing memories; Alabama football games,
-              freezing walks across the Iowa State campus, Greek life formals, a
-              summer in Colorado. Now we live together in Arlington and can't
-              wait to make more.
+              From Overland Park, KS to Arlington, VA, Haley and I's story spans
+              thousands of miles and nearly ten years. We became close friends
+              in our junior year of high school while sitting together in
+              Spanish class (thanks, Senora Tritt!), and after a short summer of{" "}
+              <em>the friendzone</em>, started dating. When graduation came,
+              Haley chose to spend her next four years at Alabama and I at Iowa
+              State, and so the dreaded long distance- 886 miles, to be exact-
+              began. Four years of Facetime, insomnia cookies, long flights, and
+              a couple of degrees later, we landed in Virginia, where Haley
+              began working as a Cardiovascular ICU Nurse in Washington, DC, and
+              I as a Software Engineer. Along the way, many visits and amazing
+              memories were made; Alabama football games, freezing walks across
+              the Iowa State campus, a few surprises, a summer in Colorado. Now
+              we are ready to get married and continue to create many more.
             </Typography>
           </Container>
         </Grid>
@@ -110,8 +112,7 @@ const Story = () => {
           <CardBack>
             <Grid container direction="column" justifyContent="center">
               <Typography variant="h4" align="center">
-                {" "}
-                How well do you know us?
+                HOW WELL DO YOU KNOW US?
               </Typography>
             </Grid>
           </CardBack>
@@ -125,12 +126,16 @@ const Story = () => {
               raised={cardsRaised[0]}
             >
               <CardFront>
-                <Typography align="center">Where did we first meet? (Before we started dating)</Typography>
+                <Typography variant="h6" align="center">
+                  Where did we first meet? (Before we started dating)
+                </Typography>
               </CardFront>
             </Card>
             <Card onClick={() => handleFlip(0)}>
               <CardBack>
-              <Typography align="center">Biology class, freshman year of high school (2013).</Typography>
+                <Typography variant="h6" align="center">
+                  Biology class, freshman year of high school (2013).
+                </Typography>
               </CardBack>
             </Card>
           </ReactCardFlip>
@@ -143,10 +148,18 @@ const Story = () => {
               onMouseOut={() => handleRaised(1)}
               raised={cardsRaised[1]}
             >
-              <CardFront><Typography align="center">How long have we been dating?</Typography></CardFront>
+              <CardFront>
+                <Typography variant="h6" align="center">
+                  How long have we been dating?
+                </Typography>
+              </CardFront>
             </Card>
             <Card onClick={() => handleFlip(1)}>
-              <CardBack><Typography align="center">6 years and counting!</Typography></CardBack>
+              <CardBack>
+                <Typography variant="h6" align="center">
+                  6 years and counting!
+                </Typography>
+              </CardBack>
             </Card>
           </ReactCardFlip>
         </Grid>
@@ -158,10 +171,18 @@ const Story = () => {
               onMouseOut={() => handleRaised(2)}
               raised={cardsRaised[2]}
             >
-              <CardFront><Typography align="center">Where did we get engaged?</Typography></CardFront>
+              <CardFront>
+                <Typography variant="h6" align="center">
+                  Where did we get engaged?
+                </Typography>
+              </CardFront>
             </Card>
             <Card onClick={() => handleFlip(2)}>
-              <CardBack><Typography align="center">Great Falls National Park in Virginia</Typography></CardBack>
+              <CardBack>
+                <Typography variant="h6" align="center">
+                  Great Falls National Park in Virginia
+                </Typography>
+              </CardBack>
             </Card>
           </ReactCardFlip>
         </Grid>
@@ -173,10 +194,18 @@ const Story = () => {
               onMouseOut={() => handleRaised(3)}
               raised={cardsRaised[3]}
             >
-              <CardFront><Typography align="center">What is our favorite Arlington / DC Spot?</Typography></CardFront>
+              <CardFront>
+                <Typography variant="h6" align="center">
+                  What is our favorite Arlington / DC Spot?
+                </Typography>
+              </CardFront>
             </Card>
             <Card onClick={() => handleFlip(3)}>
-              <CardBack><Typography align="center">O'Sullivan's Irish Pub</Typography></CardBack>
+              <CardBack>
+                <Typography variant="h6" align="center">
+                  O'Sullivan's Irish Pub
+                </Typography>
+              </CardBack>
             </Card>
           </ReactCardFlip>
         </Grid>
@@ -188,10 +217,18 @@ const Story = () => {
               onMouseOut={() => handleRaised(4)}
               raised={cardsRaised[4]}
             >
-              <CardFront><Typography align="center">What is our song?</Typography></CardFront>
+              <CardFront>
+                <Typography variant="h6" align="center">
+                  What is our song?
+                </Typography>
+              </CardFront>
             </Card>
             <Card onClick={() => handleFlip(4)}>
-              <CardBack><Typography align="center">Vienna, Billy Joel</Typography></CardBack>
+              <CardBack>
+                <Typography variant="h6" align="center">
+                  Vienna, Billy Joel
+                </Typography>
+              </CardBack>
             </Card>
           </ReactCardFlip>
         </Grid>
@@ -203,10 +240,18 @@ const Story = () => {
               onMouseOut={() => handleRaised(5)}
               raised={cardsRaised[5]}
             >
-              <CardFront><Typography align="center">Who is the tidiest?</Typography></CardFront>
+              <CardFront>
+                <Typography variant="h6" align="center">
+                  Who is the tidiest?
+                </Typography>
+              </CardFront>
             </Card>
             <Card onClick={() => handleFlip(5)}>
-              <CardBack><Typography align="center">Haley (or so she claims)</Typography></CardBack>
+              <CardBack>
+                <Typography variant="h6" align="center">
+                  Haley (or so she claims)
+                </Typography>
+              </CardBack>
             </Card>
           </ReactCardFlip>
         </Grid>
@@ -219,14 +264,18 @@ const Story = () => {
               raised={cardsRaised[6]}
             >
               <CardFront>
-              <Typography align="center">If we could travel anywhere in the world, where would we go?</Typography>
+                <Typography variant="h6" align="center">
+                  If we could travel anywhere in the world, where would we go?
+                </Typography>
               </CardFront>
             </Card>
             <Card onClick={() => handleFlip(6)}>
               <CardBack>
-              <Typography align="center">Haley: Paris
-                <br />
-                Griffin: Patagonia and Tierra Del Fuego</Typography>
+                <Typography variant="h6" align="center">
+                  Haley: Paris
+                  <br />
+                  Griffin: Patagonia and Tierra Del Fuego
+                </Typography>
               </CardBack>
             </Card>
           </ReactCardFlip>

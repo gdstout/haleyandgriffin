@@ -63,6 +63,9 @@ const RSVP = () => {
     setResponse(e.target.value);
     if(e.target.value === "Decline"){
       setPlusOne("No");
+      checkValidForm(name, plusOneName, "No");
+    }else {
+      checkValidForm(name, plusOneName, "Yes");
     }
   };
 

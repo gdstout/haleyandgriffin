@@ -26,7 +26,7 @@ const locations = {
     zoom: 11,
     marker: false,
     mapsUrl: "",
-    img: UnionStation
+    img: UnionStation,
   },
   hawthorneHouse: {
     latlng: { lat: 39.2039303, lng: -94.68936889999999 },
@@ -46,7 +46,7 @@ const locations = {
     zoom: 11,
     marker: true,
     mapsUrl: "https://g.page/KCIAirport?share",
-    img: MCIAirport
+    img: MCIAirport,
   },
   unionStation: {
     latlng: { lat: 39.0860073, lng: -94.58586059999999 },
@@ -60,7 +60,7 @@ const locations = {
     zoom: 15,
     marker: true,
     mapsUrl: "https://goo.gl/maps/KUkBD8berNccEGL67",
-    img: LibertyMemorial
+    img: LibertyMemorial,
   },
   powerAndLightDistrict: {
     latlng: { lat: 39.0987792, lng: -94.5825043 },
@@ -74,7 +74,7 @@ const locations = {
     zoom: 15,
     marker: true,
     mapsUrl: "https://goo.gl/maps/rNBasMhRcLpGe4hP7",
-    img: NelsonAtkins
+    img: NelsonAtkins,
   },
   jackStack: {
     latlng: { lat: 39.08741, lng: -94.5852962 },
@@ -253,7 +253,7 @@ const Travel = () => {
         <Grid item xs={12} lg={4}>
           <Grid item xs={12}>
             <Typography variant="h5">
-              <strong>Hotel Block</strong>
+              <strong>Hotel Block Options</strong>
             </Typography>
           </Grid>
           <InfoWrapper>
@@ -274,7 +274,7 @@ const Travel = () => {
                       color="secondary"
                       onClick={() => updateMap(locations.hotel)}
                     >
-                      View on Map
+                      Hotel Indigo Downtown
                     </Button>
                   </InfoLineItem2>
                 </InfoLine>
@@ -285,7 +285,7 @@ const Travel = () => {
                     <SellIcon color="secondary" />
                   </InfoLineItem>
                   <InfoLineItem2>
-                    <Typography>$229-$250</Typography>
+                    <Typography>$189/night</Typography>
                   </InfoLineItem2>
                 </InfoLine>
               </Grid>
@@ -296,11 +296,11 @@ const Travel = () => {
                   </InfoLineItem>
                   <InfoLineItem2>
                     <StyledLink
-                      href="tel"
+                      href="tel:+18162838000"
                       target="_blank"
                       rel="noreferrer"
                     >
-                      <Typography>(816) 421-6800</Typography>
+                      <Typography>(816) 283-8000</Typography>
                     </StyledLink>
                   </InfoLineItem2>
                 </InfoLine>
@@ -312,10 +312,19 @@ const Travel = () => {
                   </InfoLineItem>
                   <InfoLineItem2>
                     <StyledLink href="" target="_blank" rel="noreferrer">
-                      <Typography>Book Here</Typography>
+                      <Typography>
+                        Booking info will be avilable at a later time
+                      </Typography>
                     </StyledLink>
                   </InfoLineItem2>
                 </InfoLine>
+              </Grid>
+              <Grid item xs={12}>
+                <Typography variant="body1">
+                  Located just North of the Power and Light District, guests who
+                  want to stay downtown closer to the venue and KC bar scene
+                  will want to look at this option.
+                </Typography>
               </Grid>
               <Grid item xs={12} />
               <Grid item xs={12}>
@@ -323,11 +332,65 @@ const Travel = () => {
               </Grid>
               <Grid item xs={12} />
               <Grid item xs={12}>
+                <InfoLine>
+                  <InfoLineItem>
+                    <PinDropIcon color="secondary" />
+                  </InfoLineItem>
+                  <InfoLineItem2>
+                    <Button
+                      variant="outlined"
+                      color="secondary"
+                      onClick={() => updateMap(locations.hotel)}
+                    >
+                      ??? Overland Park
+                    </Button>
+                  </InfoLineItem2>
+                </InfoLine>
+              </Grid>
+              <Grid item xs={12}>
+                <InfoLine>
+                  <InfoLineItem>
+                    <SellIcon color="secondary" />
+                  </InfoLineItem>
+                  <InfoLineItem2>
+                    <Typography>$???/night</Typography>
+                  </InfoLineItem2>
+                </InfoLine>
+              </Grid>
+              <Grid item xs={12}>
+                <InfoLine>
+                  <InfoLineItem>
+                    <LocalPhoneIcon color="secondary" />
+                  </InfoLineItem>
+                  <InfoLineItem2>
+                    <StyledLink
+                      href="tel:+18162838000"
+                      target="_blank"
+                      rel="noreferrer"
+                    >
+                      <Typography>(???) ???-????</Typography>
+                    </StyledLink>
+                  </InfoLineItem2>
+                </InfoLine>
+              </Grid>
+              <Grid item xs={12}>
+                <InfoLine>
+                  <InfoLineItem>
+                    <InfoIcon color="secondary" />
+                  </InfoLineItem>
+                  <InfoLineItem2>
+                    <StyledLink href="" target="_blank" rel="noreferrer">
+                      <Typography>
+                        Booking info will be avilable at a later time
+                      </Typography>
+                    </StyledLink>
+                  </InfoLineItem2>
+                </InfoLine>
+              </Grid>
+              <Grid item xs={12}>
                 <Typography variant="body1">
-                  Anticipate enrichment at the newly restyled Kansas City
-                  Marriott Downtown. Set in the vibrant downtown district, our
-                  hotel occupies a historic building, reflecting the charm and
-                  history of Kansas City, MO.
+                  Out of town guests with family in Overland Park may want to
+                  stay out of the city and closer to relatives' houses.
                 </Typography>
               </Grid>
             </Grid>

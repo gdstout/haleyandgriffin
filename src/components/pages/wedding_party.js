@@ -17,6 +17,8 @@ import Alex from "../../images/alex.png";
 import Will from "../../images/will.png";
 import Sam from "../../images/sam.png";
 import Laura from "../../images/laura.png";
+import Mike from "../../images/mike.png";
+import Emily from "../../images/emily.png";
 
 const ImgStyled = styled("img")(({ theme }) => ({
   [theme.breakpoints.up("lg")]: {
@@ -47,7 +49,7 @@ const WeddingParty = () => {
             <Typography variant="h5">Tara Reddy</Typography>
             <Typography>Bridesmaid</Typography>
 
-            <ImgStyled src={MG} />
+            <ImgStyled src={Emily} />
             <Typography variant="h5">Emily DeFoor</Typography>
             <Typography>Bridesmaid</Typography>
 
@@ -102,7 +104,7 @@ const WeddingParty = () => {
             <Typography variant="h5">Kyle Marek</Typography>
             <Typography>Groomsman</Typography>
 
-            <ImgStyled src={Kyle} />
+            <ImgStyled src={Mike} />
             <Typography variant="h5">Michael Davis</Typography>
             <Typography>Groomsman</Typography>
 

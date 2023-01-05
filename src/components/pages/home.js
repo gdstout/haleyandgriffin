@@ -1,8 +1,25 @@
 import React from "react";
-import { Container, Grid, Typography, useTheme, useMediaQuery } from "@mui/material";
+import {
+  Container,
+  Grid,
+  Typography,
+  useTheme,
+  useMediaQuery,
+} from "@mui/material";
 import { styled } from "@mui/material/styles";
 import { NavLink } from "react-router-dom";
 import Smiley from "../../images/smiley.jpg";
+
+const { DateTime } = require("luxon");
+
+const weddingDate = DateTime.fromISO("2023-11-17");
+const engagementDate = DateTime.fromISO("2021-11-18");
+const startDate = DateTime.fromISO("2016-11-18");
+
+const daysLeft = weddingDate.diff(DateTime.now(), ["days"]).toObject();
+const totalTime = DateTime.now().diff(startDate, ["days"]).toObject();
+const timeEngaged = DateTime.now().diff(engagementDate, ["days"]).toObject();
+console.log(totalTime);
 
 const ImgContainer = styled("div")({
   paddingTop: "30px",
@@ -36,35 +53,44 @@ const Home = () => {
         </Grid>
 
         <Grid item>
-          <Typography variant="h2" align="center">
-            NOVEMBER 2023
-          </Typography>
-          <Typography variant="h6" align="center">
-            Parkville, MO
+          {!useMediaQuery(theme.breakpoints.up("lg")) ? (
+            <Typography variant="h2" align="center">
+              NOVEMBER 2023
+            </Typography>
+          ) : (
+            <Typography variant="h1" align="center">
+              NOVEMBER 2023
+            </Typography>
+          )}
+          <Typography variant="h5" align="center">
+            PARKVILLE, MO
           </Typography>
         </Grid>
         <Grid item>
           <Container maxWidth="md">
             <Typography variant="h6" align="center">
-              Welcome to our wedding website! Thanks for helping us celebrate
-              our special day; we really appreciate it. Please visit the various
-              pages to find out more about us, get day-of information, RSVP, and
-              more!
+              {" "}
+              <em>
+                {Math.round(totalTime.days)} days together
+                <br /> {Math.round(timeEngaged.days)} days engaged
+                <br /> {Math.round(daysLeft.days)} day
+                {Math.round(daysLeft.days) !== 1 && "s"} until forever
+              </em>
             </Typography>
           </Container>
         </Grid>
         {!useMediaQuery(theme.breakpoints.up("lg")) && (
-        <Grid item>
-          <br/>
-          <Typography align="center" variant="h6">
-            <PageLink to="/details">DETAILS</PageLink>
-            {" • "}
-            <PageLink to="/registry">REGISTRY</PageLink>
-            {" • "}
-            <PageLink to="/rsvp">RSVP</PageLink>
-          </Typography>
-        </Grid>
-)}
+          <Grid item>
+            <br />
+            <Typography align="center" variant="h6">
+              <PageLink to="/details">DETAILS</PageLink>
+              {" • "}
+              <PageLink to="/registry">REGISTRY</PageLink>
+              {" • "}
+              <PageLink to="/rsvp">RSVP</PageLink>
+            </Typography>
+          </Grid>
+        )}
       </Grid>
     </Container>
   );

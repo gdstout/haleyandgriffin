@@ -65,7 +65,7 @@ const RSVP = () => {
       setPlusOne("No");
       checkValidForm(name, plusOneName, "No");
     }else {
-      checkValidForm(name, plusOneName, "Yes");
+      checkValidForm(name, plusOneName, plusOne);
     }
   };
 

@@ -171,7 +171,7 @@ const RSVP = () => {
               <TextField
                 fullWidth
                 required
-                label="First and Last Name"
+                label="+1's First and Last Name"
                 helperText="We need a name for placecards at the reception!"
                 variant="outlined"
                 color="secondary"

@@ -274,7 +274,7 @@ const Story = () => {
                 <Typography variant="h6" align="center">
                   Haley: Paris
                   <br />
-                  Griffin: Patagonia and Tierra Del Fuego
+                  Griffin: Tierra Del Fuego
                 </Typography>
               </CardBack>
             </Card>

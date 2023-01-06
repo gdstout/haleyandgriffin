@@ -108,7 +108,7 @@ const Details = () => {
                 <Typography variant="body1">
                   Sitting just north of beautifully quaint Parkville, Missouri,
                   this chapel and event space is perfect for our wedding day.
-                  With the ever-changing weather of the Kansas City area, the quick 50
+                  With the ever-changing weather of the Kansas City area, a quick 50
                   yard walk from ceremony to reception will lend itself to any
                   condition. In the case of a pleasant fall day, the sprawling lawn
                   and covered deck of the reception hall will be a wonderful

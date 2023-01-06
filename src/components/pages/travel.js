@@ -19,13 +19,15 @@ import LibertyMemorial from "../../images/liberty_memorial.jpg";
 import PowerAndLightDistrict from "../../images/power_and_light_district.jpg";
 import NelsonAtkins from "../../images/nelson_atkins.jpg";
 import JackStack from "../../images/jack_stack.jpg";
+import HotelIndigo from "../../images/hotel_indigo.jpg";
+import RockhillGrill from "../../images/rockhill_grill.jpg";
 
 const locations = {
   default: {
     latlng: { lat: 39.1509528, lng: -94.6515581 },
     zoom: 11,
     marker: false,
-    mapsUrl: "",
+    mapsUrl: "https://goo.gl/maps/ouehM5aze2vtN9jh9",
     img: UnionStation,
   },
   hawthorneHouse: {
@@ -36,10 +38,18 @@ const locations = {
     img: HawthorneHouse,
   },
   hotel: {
-    latlng: { lat: 39.100454, lng: -94.5862796 },
-    zoom: 13,
+    latlng: { lat: 39.1007605, lng: -94.5846382 },
+    zoom: 15,
     marker: true,
-    mapsUrl: "",
+    mapsUrl: "https://goo.gl/maps/c2VjmV2EMNH2iryb6",
+    img: HotelIndigo,
+  },
+  rockhill: {
+    latlng: { lat: 39.0888831, lng: -94.58169459999999 },
+    zoom: 15,
+    marker: true,
+    mapsUrl: "https://goo.gl/maps/FocD7jykVaVWQ28y6",
+    img: RockhillGrill,
   },
   airport: {
     latlng: { lat: 39.3035862, lng: -94.7092596 },
@@ -181,13 +191,11 @@ const Travel = () => {
                 position={locations.hawthorneHouse.latlng}
                 onClick={() => openUrl(locations.hawthorneHouse.mapsUrl)}
               />
-              {location.marker ? (
+              {location.marker && (
                 <Marker
                   position={location.latlng}
                   onClick={() => openUrl(location.mapsUrl)}
                 ></Marker>
-              ) : (
-                <></>
               )}
             </GoogleMap>
           </StickyDiv>
@@ -206,7 +214,7 @@ const Travel = () => {
         <Grid item xs={12} lg={4}>
           <Grid item xs={12}>
             <Typography variant="h5">
-              <strong>The Hawthorne House</strong>
+              <strong>Our Venues</strong>
             </Typography>
           </Grid>
           <InfoWrapper>
@@ -227,16 +235,11 @@ const Travel = () => {
                       color="secondary"
                       onClick={() => updateMap(locations.hawthorneHouse)}
                     >
-                      View on Map
+                      The Hawthorne House
                     </Button>
                   </InfoLineItem2>
                 </InfoLine>
               </Grid>
-              <Grid item xs={12} />
-              <Grid item xs={12}>
-                <Divider />
-              </Grid>
-              <Grid item xs={12} />
               <Grid item xs={12}>
                 <Typography variant="body1">
                   The Hawthorne House is a ~20 minute drive from downtown KC, or
@@ -245,6 +248,34 @@ const Travel = () => {
                     Parking is free, and you may leave your car overnight if
                     necessary.
                   </strong>
+                </Typography>
+              </Grid>
+              <Grid item xs={12} />
+              <Grid item xs={12}>
+                <Divider />
+              </Grid>
+              <Grid item xs={12} />
+              <Grid item xs={12}>
+                <InfoLine>
+                  <InfoLineItem>
+                    <PinDropIcon color="secondary" />
+                  </InfoLineItem>
+                  <InfoLineItem2>
+                    <Button
+                      variant="outlined"
+                      color="secondary"
+                      onClick={() => updateMap(locations.rockhill)}
+                    >
+                      Rockhill Grill
+                    </Button>
+                  </InfoLineItem2>
+                </InfoLine>
+              </Grid>
+
+              <Grid item xs={12}>
+                <Typography variant="body1">
+                  A sophisticated destination offering American plates &
+                  inventive cocktails in stylish surrounds.
                 </Typography>
               </Grid>
             </Grid>
@@ -311,10 +342,12 @@ const Travel = () => {
                     <InfoIcon color="secondary" />
                   </InfoLineItem>
                   <InfoLineItem2>
-                    <StyledLink href="" target="_blank" rel="noreferrer">
-                      <Typography>
-                        Booking info will be avilable at a later time
-                      </Typography>
+                    <StyledLink
+                      href="https://www.ihg.com/hotelindigo/hotels/us/en/find-hotels/select-roomrate?fromRedirect=true&qSrt=sBR&qIta=99801505&icdv=99801505&qSlH=MKCSW&qCiD=16&qCiMy=102023&qCoD=19&qCoMy=102023&qGrpCd=UOT&qAAR=6CBARC&qRtP=6CBARC&setPMCookies=true&qSHBrC=IN&qDest=101%20West%2011th%20Street,%20Kansas%20City,%20MO,%20US&srb_u=1"
+                      target="_blank"
+                      rel="noreferrer"
+                    >
+                      <Typography>Book here</Typography>
                     </StyledLink>
                   </InfoLineItem2>
                 </InfoLine>
@@ -391,6 +424,25 @@ const Travel = () => {
                 <Typography variant="body1">
                   Out of town guests with family in Overland Park may want to
                   stay out of the city and closer to relatives' houses.
+                </Typography>
+              </Grid>
+              <Grid item xs={12} />
+              <Grid item xs={12}>
+                <Divider />
+              </Grid>
+              <Grid item xs={12} />
+              <Grid item xs={12}>
+                <Typography variant="body1">
+                  We also strongly recommend checking out{" "}
+                  <StyledLink
+                    href="https://www.airbnb.com/s/Downtown-Kansas-City--Kansas-City--Missouri--United-States/homes?tab_id=home_tab&refinement_paths%5B%5D=%2Fhomes&flexible_trip_lengths%5B%5D=one_week&price_filter_input_type=0&price_filter_num_nights=3&query=Downtown%20Kansas%20City%2C%20Kansas%20City%2C%20MO&place_id=ChIJMY28JmrwwIcR4l_jcusL-JY&date_picker_type=calendar&checkin=2023-11-17&checkout=2023-11-20&flexible_date_search_filter_type=0&source=structured_search_input_header&search_type=user_map_move&ne_lat=39.13982553888948&ne_lng=-94.52114664989779&sw_lat=39.038831652954215&sw_lng=-94.64336955028841&zoom=13&search_by_map=true"
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    Airbnbs
+                  </StyledLink>{" "}
+                  in the area, especially if wanting to stay with a larger
+                  group!
                 </Typography>
               </Grid>
             </Grid>

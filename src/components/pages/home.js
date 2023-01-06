@@ -18,7 +18,7 @@ const startDate = DateTime.fromISO("2016-11-18");
 
 const daysLeft = weddingDate.diff(DateTime.now(), ["days"]).toObject();
 const totalTime = DateTime.now().diff(startDate, ["days"]).toObject();
-const timeEngaged = DateTime.now().diff(engagementDate, ["days"]).toObject();
+const timeEngaged = DateTime.now().diff(engagementDate, ["days"]).toObject();     
 
 const ImgContainer = styled("div")({
   paddingTop: "30px",

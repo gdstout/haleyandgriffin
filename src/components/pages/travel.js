@@ -21,6 +21,7 @@ import NelsonAtkins from "../../images/nelson_atkins.jpg";
 import JackStack from "../../images/jack_stack.jpg";
 import HotelIndigo from "../../images/hotel_indigo.jpg";
 import RockhillGrill from "../../images/rockhill_grill.jpg";
+import TownePlaceSuites from "../../images/towneplace_suites.jpg";
 
 const locations = {
   default: {
@@ -92,6 +93,13 @@ const locations = {
     marker: true,
     mapsUrl: "https://goo.gl/maps/DhYXHQYrAH44jPQc7",
     img: JackStack,
+  },
+  townePlaceSuites: {
+    latlng: { lat: 38.8869243, lng: -94.6665895 },
+    zoom: 13,
+    marker: true,
+    mapsUrl: "https://goo.gl/maps/qvRqETwiPsi5XFSz7",
+    img: TownePlaceSuites,
   },
 };
 
@@ -175,6 +183,7 @@ const Travel = () => {
   const openUrl = (url) => {
     window.open(url, "_blank", "noopener,noreferrer");
   };
+
   return (
     <Container maxWidth="lg">
       <Spacer />
@@ -356,7 +365,8 @@ const Travel = () => {
                 <Typography variant="body1">
                   Located just North of the Power and Light District, guests who
                   want to stay downtown closer to the venue and KC bar scene
-                  will want to look at this option.
+                  will want to look at this option. Double queen or single king
+                  rooms available.
                 </Typography>
               </Grid>
               <Grid item xs={12} />
@@ -373,9 +383,9 @@ const Travel = () => {
                     <Button
                       variant="outlined"
                       color="secondary"
-                      onClick={() => updateMap(locations.hotel)}
+                      onClick={() => updateMap(locations.townePlaceSuites)}
                     >
-                      ??? Overland Park
+                      TownePlace Suites OP
                     </Button>
                   </InfoLineItem2>
                 </InfoLine>
@@ -386,7 +396,7 @@ const Travel = () => {
                     <SellIcon color="secondary" />
                   </InfoLineItem>
                   <InfoLineItem2>
-                    <Typography>$???/night</Typography>
+                    <Typography>$119/night</Typography>
                   </InfoLineItem2>
                 </InfoLine>
               </Grid>
@@ -397,11 +407,11 @@ const Travel = () => {
                   </InfoLineItem>
                   <InfoLineItem2>
                     <StyledLink
-                      href="tel:+18162838000"
+                      href="tel:+19138513100"
                       target="_blank"
                       rel="noreferrer"
                     >
-                      <Typography>(???) ???-????</Typography>
+                      <Typography>(913) 851-3100</Typography>
                     </StyledLink>
                   </InfoLineItem2>
                 </InfoLine>
@@ -412,10 +422,12 @@ const Travel = () => {
                     <InfoIcon color="secondary" />
                   </InfoLineItem>
                   <InfoLineItem2>
-                    <StyledLink href="" target="_blank" rel="noreferrer">
-                      <Typography>
-                        Booking info will be avilable at a later time
-                      </Typography>
+                    <StyledLink
+                      href="https://www.marriott.com/event-reservations/reservation-link.mi?id=1677527212870&key=GRP&app=resvlink"
+                      target="_blank"
+                      rel="noreferrer"
+                    >
+                      <Typography>Book here</Typography>
                     </StyledLink>
                   </InfoLineItem2>
                 </InfoLine>
@@ -423,7 +435,7 @@ const Travel = () => {
               <Grid item xs={12}>
                 <Typography variant="body1">
                   Out of town guests with family in Overland Park may want to
-                  stay out of the city and closer to relatives' houses.
+                  stay out of the city and closer to relatives' houses. Single queen + pullout sofa available.
                 </Typography>
               </Grid>
               <Grid item xs={12} />

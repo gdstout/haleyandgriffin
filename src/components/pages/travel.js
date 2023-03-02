@@ -435,7 +435,8 @@ const Travel = () => {
               <Grid item xs={12}>
                 <Typography variant="body1">
                   Out of town guests with family in Overland Park may want to
-                  stay out of the city and closer to relatives' houses. Single queen + pullout sofa available.
+                  stay out of the city and closer to relatives' houses. Single
+                  queen + pullout sofa available.
                 </Typography>
               </Grid>
               <Grid item xs={12} />

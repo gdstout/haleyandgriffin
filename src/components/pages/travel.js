@@ -152,15 +152,16 @@ const StyledLink = styled("a")(({ theme }) => ({
   },
 }));
 
-const StickyDiv = styled("div")({
+const StickyDiv = styled("div")(({ theme }) =>({
   // position: "sticky",
   top: 80,
   zIndex: 1000,
   boxShadow: "0 4px 4px rgba(0,0,0,0.2)",
-});
+}));
 
 const MapInfoDiv = styled("div")({
   display: "flex",
+  marginTop: "5px"
 });
 
 const Travel = () => {

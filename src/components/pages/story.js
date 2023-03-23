@@ -20,7 +20,7 @@ const CardBack = styled("div")({
   justifyContent: "center",
   height: "200px",
   padding: "25px",
-  cursor: "pointer"
+  cursor: "pointer",
 });
 
 const CardFront = styled("div")(({ theme }) => ({

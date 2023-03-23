@@ -4,9 +4,15 @@ import { Card, Container, Grid, Typography } from "@mui/material";
 import ReactCardFlip from "react-card-flip";
 import Map from "../../images/map.png";
 
+const PageContainer = styled(Container)(({ theme }) => ({
+  [theme.breakpoints.down("lg")]: {
+    padding: "6px",
+  },
+}));
+
 const StoryContainer = styled(Container)({
   padding: "0px"
-})
+});
 
 const CardBack = styled("div")({
   display: "flex",
@@ -78,7 +84,7 @@ const Story = () => {
   };
 
   let content = (
-    <Container maxWidth="lg" >
+    <PageContainer maxWidth="lg" >
       <Grid container spacing={2}>
         <Grid item xs={12}>
           <ImgContainer>
@@ -285,7 +291,7 @@ const Story = () => {
           </ReactCardFlip>
         </Grid>
       </CardContainer>
-    </Container>
+    </PageContainer>
   );
   return content;
 };

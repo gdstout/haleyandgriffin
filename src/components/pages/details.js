@@ -7,6 +7,18 @@ import PinDropIcon from "@mui/icons-material/PinDrop";
 import CalendarTodayIcon from "@mui/icons-material/Event";
 import WeddingTimeline from "../wedding_timeline";
 
+const PageContainer = styled(Container)(({ theme }) => ({
+  [theme.breakpoints.down("lg")]: {
+    padding: "6px",
+  },
+}));
+
+const TopSpacer = styled("div")(({ theme }) => ({
+  height: theme.spacing(3),
+  [theme.breakpoints.down("lg")]: {
+    height: "0px",
+  },
+}));
 const Spacer = styled("div")(({ theme }) => ({
   height: theme.spacing(3),
 }));
@@ -45,8 +57,8 @@ const InfoLineItem2 = styled("div")({
 
 const Details = () => {
   let content = (
-    <Container maxWidth="lg">
-      <Spacer />
+    <PageContainer maxWidth="lg">
+      <TopSpacer />
       <Grid
         container
         direction="row-reverse"
@@ -142,7 +154,7 @@ const Details = () => {
           <ImgStyled src={Chapel} />
         </Grid>
       </Grid>
-    </Container>
+    </PageContainer>
   );
   return content;
 };

@@ -90,7 +90,7 @@ const MenuBar = () => {
   };
 
   let content = (
-    <AppBarStyled elevation={2}>
+    <AppBarStyled elevation={1}>
       {useMediaQuery(theme.breakpoints.up("lg")) ? (
         <ToolbarBig>
           <Grid container  justifyContent="space-around" alignItems="center">

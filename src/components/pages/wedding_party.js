@@ -20,6 +20,12 @@ import Laura from "../../images/laura.png";
 import Mike from "../../images/mike.png";
 import Emily from "../../images/emily.png";
 
+const PageContainer = styled(Container)(({ theme }) => ({
+  [theme.breakpoints.down("lg")]: {
+    padding: "0px",
+  },
+}));
+
 const ImgStyled = styled("img")(({ theme }) => ({
   [theme.breakpoints.up("lg")]: {
     width: "75%",
@@ -33,7 +39,7 @@ const ImgStyled = styled("img")(({ theme }) => ({
 
 const WeddingParty = () => {
   let content = (
-    <Container maxWidth="md">
+    <PageContainer maxWidth="md">
       <Grid container direction="row">
         <Grid item xs={6}>
           <Grid container direction="column" alignItems="center">
@@ -114,7 +120,7 @@ const WeddingParty = () => {
           </Grid>
         </Grid>
       </Grid>
-    </Container>
+    </PageContainer>
   );
   return content;
 };

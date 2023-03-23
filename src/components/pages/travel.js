@@ -103,6 +103,19 @@ const locations = {
   },
 };
 
+const PageContainer = styled(Container)(({ theme }) => ({
+  [theme.breakpoints.down("lg")]: {
+    padding: "6px",
+  },
+}));
+
+const TopSpacer = styled("div")(({ theme }) => ({
+  height: theme.spacing(3),
+  [theme.breakpoints.down("lg")]: {
+    height: "0px",
+  },
+}));
+
 const Spacer = styled("div")(({ theme }) => ({
   height: theme.spacing(3),
 }));
@@ -185,8 +198,8 @@ const Travel = () => {
   };
 
   return (
-    <Container maxWidth="lg">
-      <Spacer />
+    <PageContainer maxWidth="lg">
+      <TopSpacer />
       {isLoaded ? (
         <div>
           <StickyDiv>
@@ -578,7 +591,7 @@ const Travel = () => {
           <ImgStyled src={location.img} alt="img" />
         </Grid>
       </Grid>
-    </Container>
+    </PageContainer>
   );
   //return content;
 };

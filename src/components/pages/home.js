@@ -20,9 +20,18 @@ const daysLeft = weddingDate.diff(DateTime.now(), ["days"]).toObject();
 const totalTime = DateTime.now().diff(startDate, ["days"]).toObject();
 const timeEngaged = DateTime.now().diff(engagementDate, ["days"]).toObject();     
 
-const ImgContainer = styled("div")({
+const PageContainer = styled(Container)(({ theme }) => ({
+  [theme.breakpoints.down("lg")]: {
+    padding: "6px",
+  },
+}));
+
+const ImgContainer = styled("div")(({theme}) => ({
   paddingTop: "30px",
-});
+  [theme.breakpoints.down("lg")]: {
+    paddingTop: "0px",
+  },
+}));
 
 const ImgStyled = styled("img")({
   maxHeight: "100%",
@@ -43,7 +52,7 @@ const PageLink = styled(NavLink)(({ theme }) => ({
 const Home = () => {
   const theme = useTheme();
   let content = (
-    <Container maxWidth="lg">
+    <PageContainer maxWidth="lg">
       <Grid container justifyContent="center" spacing={2} direction="column">
         <Grid item>
           <ImgContainer>
@@ -91,7 +100,7 @@ const Home = () => {
           </Grid>
         )}
       </Grid>
-    </Container>
+    </PageContainer>
   );
   return content;
 };

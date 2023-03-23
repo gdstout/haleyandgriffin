@@ -20,6 +20,7 @@ const CardBack = styled("div")({
   justifyContent: "center",
   height: "200px",
   padding: "25px",
+  cursor: "pointer"
 });
 
 const CardFront = styled("div")(({ theme }) => ({
@@ -30,6 +31,7 @@ const CardFront = styled("div")(({ theme }) => ({
   height: "200px",
   color: "white",
   padding: "25px",
+  cursor: "pointer"
 }));
 
 const ImgContainer = styled("div")({

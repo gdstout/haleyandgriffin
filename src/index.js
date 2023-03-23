@@ -1,8 +1,12 @@
 import React from "react";
-import ReactDOM from "react-dom";
+import ReactDOM from "react-dom/client";
 import { BrowserRouter } from "react-router-dom";
 import "./index.css";
-import { createTheme, responsiveFontSizes, ThemeProvider } from "@mui/material/styles";
+import {
+  createTheme,
+  responsiveFontSizes,
+  ThemeProvider,
+} from "@mui/material/styles";
 import App from "./components/app";
 import { CssBaseline } from "@mui/material";
 
@@ -14,7 +18,7 @@ let theme = createTheme({
     },
     secondary: {
       main: "#165916",
-      faded: "#6d8a6d"
+      faded: "#6d8a6d",
     },
     background: {
       default: "#eff4ec",
@@ -23,17 +27,17 @@ let theme = createTheme({
   typography: {
     h1: {
       fontFamily: "Prata",
-      fontSize: "4.5em"
+      fontSize: "4.5em",
     },
     h2: {
       fontFamily: "Prata",
-      fontSize: "3.5em"
+      fontSize: "3.5em",
     },
     h3: {
       fontFamily: "Playfair Display",
     },
     h4: {
-      fontFamily: "Playfair Display"
+      fontFamily: "Playfair Display",
     },
     fontFamily: "Nanum Myeongjo",
   },
@@ -50,14 +54,16 @@ let theme = createTheme({
 
 theme = responsiveFontSizes(theme);
 
-ReactDOM.render(
-  <React.StrictMode>
-    <ThemeProvider theme={theme}>
-      <CssBaseline/>
-      <BrowserRouter>
-        <App />
-      </BrowserRouter>
-    </ThemeProvider>
-  </React.StrictMode>,
-  document.getElementById("root")
+const container = document.getElementById("root");
+
+const root = ReactDOM.createRoot(container);
+
+
+root.render(
+  <ThemeProvider theme={theme}>
+    <CssBaseline />
+    <BrowserRouter>
+      <App />
+    </BrowserRouter>
+  </ThemeProvider>
 );

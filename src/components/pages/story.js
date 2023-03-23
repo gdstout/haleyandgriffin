@@ -4,6 +4,10 @@ import { Card, Container, Grid, Typography } from "@mui/material";
 import ReactCardFlip from "react-card-flip";
 import Map from "../../images/map.png";
 
+const StoryContainer = styled(Container)({
+  padding: "0px"
+})
+
 const CardBack = styled("div")({
   display: "flex",
   alignItems: "center",
@@ -74,7 +78,7 @@ const Story = () => {
   };
 
   let content = (
-    <Container maxWidth="lg">
+    <Container maxWidth="lg" >
       <Grid container spacing={2}>
         <Grid item xs={12}>
           <ImgContainer>
@@ -87,7 +91,7 @@ const Story = () => {
           </Typography>
         </Grid>
         <Grid item xs={12}>
-          <Container maxWidth="md">
+          <StoryContainer maxWidth="md">
             <Typography variant="h6">
               From Overland Park, KS to Arlington, VA, Haley and I's story spans
               thousands of miles and nearly ten years. We became close friends
@@ -104,7 +108,7 @@ const Story = () => {
               the Iowa State campus, a few surprises, a summer in Colorado. Now
               we are ready to get married and continue to create many more.
             </Typography>
-          </Container>
+          </StoryContainer>
         </Grid>
       </Grid>
       <CardContainer container spacing={2}>

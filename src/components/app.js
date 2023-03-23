@@ -15,12 +15,12 @@ import Footer from "./footer";
 
 const PageContainer = styled("div")({
   position: "relative",
-  minHeight: "100vh"
+  minHeight: "100vh",
 });
 
 const MainContainer = styled(Container)(({ theme }) => ({
   paddingTop: "95px",
-  paddingBottom: "85px"
+  paddingBottom: "85px",
 }));
 
 const pages = [
@@ -40,7 +40,7 @@ const App = () => {
       <MenuBar />
       <MainContainer maxWidth="lg">
         <SlideRoutes location={location} duration={600} pathList={pages}>
-        <Route path="/" element={<Home />} />
+          <Route path="/" element={<Home />} />
           <Route path="/story" element={<Story />} />
           <Route path="/details" element={<Details />} />
           <Route path="/travel" element={<Travel />} />

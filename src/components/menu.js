@@ -86,10 +86,11 @@ const MenuBar = () => {
 
   const handlePageChange = (newPage) => {
     setActivePage(newPage);
+    
   };
 
   let content = (
-    <AppBarStyled>
+    <AppBarStyled elevation={2}>
       {useMediaQuery(theme.breakpoints.up("lg")) ? (
         <ToolbarBig>
           <Grid container  justifyContent="space-around" alignItems="center">

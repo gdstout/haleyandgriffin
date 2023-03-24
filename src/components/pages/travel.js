@@ -10,7 +10,12 @@ import FlightIcon from "@mui/icons-material/Flight";
 import SportsBarIcon from "@mui/icons-material/SportsBar";
 import AccountBalanceIcon from "@mui/icons-material/AccountBalance";
 import LocalDiningIcon from "@mui/icons-material/LocalDining";
-import { GoogleMap, useJsApiLoader, Marker } from "@react-google-maps/api";
+import {
+  GoogleMap,
+  useJsApiLoader,
+  Marker,
+  InfoWindow,
+} from "@react-google-maps/api";
 
 import HawthorneHouse from "../../images/hawthornehouse1.jpg";
 import MCIAirport from "../../images/mci_airport.jpg";
@@ -32,6 +37,8 @@ const locations = {
     img: UnionStation,
   },
   hawthorneHouse: {
+    name: "The Hawthorne House",
+    address: "6008 NW Bell Rd, Parkville, MO",
     latlng: { lat: 39.2039303, lng: -94.68936889999999 },
     zoom: 13,
     marker: true,
@@ -39,6 +46,8 @@ const locations = {
     img: HawthorneHouse,
   },
   hotel: {
+    name: "Hotel Indigo Downtown",
+    address: "101 W 11th St, Kansas City, MO",
     latlng: { lat: 39.1007605, lng: -94.5846382 },
     zoom: 15,
     marker: true,
@@ -46,6 +55,8 @@ const locations = {
     img: HotelIndigo,
   },
   rockhill: {
+    name: "Rockhill Grill",
+    address: "2000 Grand Blvd, Kansas City, MO",
     latlng: { lat: 39.0888831, lng: -94.58169459999999 },
     zoom: 15,
     marker: true,
@@ -53,6 +64,8 @@ const locations = {
     img: RockhillGrill,
   },
   airport: {
+    name: "MCI International Airport",
+    address: "1 International Square, Kansas City, MO",
     latlng: { lat: 39.3035862, lng: -94.7092596 },
     zoom: 11,
     marker: true,
@@ -60,6 +73,8 @@ const locations = {
     img: MCIAirport,
   },
   unionStation: {
+    name: "Union Station",
+    address: "Kansas City, MO 64108",
     latlng: { lat: 39.0860073, lng: -94.58586059999999 },
     zoom: 15,
     marker: true,
@@ -67,6 +82,8 @@ const locations = {
     img: UnionStation,
   },
   libertyMemorial: {
+    name: "Liberty Memorial",
+    address: "2 Memorial Dr, Kansas City, MO",
     latlng: { lat: 39.080663, lng: -94.5860835 },
     zoom: 15,
     marker: true,
@@ -74,6 +91,8 @@ const locations = {
     img: LibertyMemorial,
   },
   powerAndLightDistrict: {
+    name: "Power and Light District",
+    address: "",
     latlng: { lat: 39.0987792, lng: -94.5825043 },
     zoom: 15,
     marker: true,
@@ -81,6 +100,8 @@ const locations = {
     img: PowerAndLightDistrict,
   },
   nelsonAtkins: {
+    name: "Nelson Atkins",
+    address: "4525 Oak St, Kansas City, MO",
     latlng: { lat: 39.0449506, lng: -94.58092839999999 },
     zoom: 15,
     marker: true,
@@ -88,6 +109,8 @@ const locations = {
     img: NelsonAtkins,
   },
   jackStack: {
+    name: "Jack Stack",
+    address: "101 W 22nd St, Kansas City, MO",
     latlng: { lat: 39.08741, lng: -94.5852962 },
     zoom: 15,
     marker: true,
@@ -95,6 +118,8 @@ const locations = {
     img: JackStack,
   },
   townePlaceSuites: {
+    name: "Towne Place Suites",
+    address: "7020 W 133rd St, Overland Park, KS",
     latlng: { lat: 38.8869243, lng: -94.6665895 },
     zoom: 13,
     marker: true,
@@ -152,7 +177,7 @@ const StyledLink = styled("a")(({ theme }) => ({
   },
 }));
 
-const StickyDiv = styled("div")(({ theme }) =>({
+const StickyDiv = styled("div")(({ theme }) => ({
   // position: "sticky",
   top: 80,
   zIndex: 1000,
@@ -161,7 +186,7 @@ const StickyDiv = styled("div")(({ theme }) =>({
 
 const MapInfoDiv = styled("div")({
   display: "flex",
-  marginTop: "5px"
+  marginTop: "5px",
 });
 
 const Travel = () => {
@@ -184,6 +209,7 @@ const Travel = () => {
   };
 
   const [location, setLocation] = useState(locations.default);
+  const [showInfo, setShowInfo] = useState(false);
 
   const updateMap = (location) => {
     setLocation(location);
@@ -192,6 +218,12 @@ const Travel = () => {
       left: 0,
       behavior: "smooth",
     });
+    setShowInfo(true);
+  };
+
+  const handleInfoClose = (e) => {
+    //e.preventDefault();
+    setShowInfo(false);
   };
 
   const openUrl = (url) => {
@@ -203,7 +235,7 @@ const Travel = () => {
       <TopSpacer />
       {isLoaded ? (
         <div>
-          <StickyDiv>
+          <StickyDiv id="map">
             <GoogleMap
               zoom={location.zoom}
               center={location.latlng}
@@ -218,7 +250,25 @@ const Travel = () => {
                 <Marker
                   position={location.latlng}
                   onClick={() => openUrl(location.mapsUrl)}
-                ></Marker>
+                >
+                  {showInfo && (
+                    <InfoWindow
+                      position={location.latlng}
+                      options={{ maxWidth: 200 }}
+                      onCloseClick={handleInfoClose}
+                    >
+                      <div onClick={() => openUrl(location.mapsUrl)}>
+                        <Typography variant="body">
+                          <strong>{location.name}</strong>
+                        </Typography>
+                        <br/>
+                        {location.address}
+                        <br />
+                        <a href={location.mapsUrl}>Open Maps</a>
+                      </div>
+                    </InfoWindow>
+                  )}
+                </Marker>
               )}
             </GoogleMap>
           </StickyDiv>

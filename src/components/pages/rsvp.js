@@ -9,6 +9,7 @@ import {
 } from "@mui/material";
 import { styled } from "@mui/system";
 import React, { useState } from "react";
+import emailjs from "@emailjs/browser";
 
 const formSinglePassword = "solo";
 const formPlusOnePassword = "plus1";
@@ -30,6 +31,7 @@ const RSVP = () => {
   const [validForm, setValidForm] = useState(false);
 
   const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
   const [response, setResponse] = useState("Accept");
   const [plusOne, setPlusOne] = useState("No");
   const [plusOneName, setPlusOneName] = useState("");
@@ -59,12 +61,16 @@ const RSVP = () => {
     checkValidForm(e.target.value, plusOneName, plusOne);
   };
 
+  const handleEmail = (e) => {
+    setEmail(e.target.value);
+  }
+
   const handleResponse = (e) => {
     setResponse(e.target.value);
-    if(e.target.value === "Decline"){
+    if (e.target.value === "Decline") {
       setPlusOne("No");
       checkValidForm(name, plusOneName, "No");
-    }else {
+    } else {
       checkValidForm(name, plusOneName, plusOne);
     }
   };
@@ -83,21 +89,50 @@ const RSVP = () => {
     setDietaryRestrictions(e.target.value);
   };
 
-  function checkValidForm(firstFieldText, secondFieldText, plusOneParam){
-    if(firstFieldText.match(/\b[a-zA-Z.,]+\s[a-zA-Z.,]+\b/)){
-      if(plusOneParam === "Yes"){
-        if(secondFieldText.match(/\b[a-zA-Z.,]+\s[a-zA-Z.,]+\b/)){
+  function checkValidForm(firstFieldText, secondFieldText, plusOneParam) {
+    if (firstFieldText.match(/\b[a-zA-Z.,]+\s[a-zA-Z.,]+\b/)) {
+      if (plusOneParam === "Yes") {
+        if (secondFieldText.match(/\b[a-zA-Z.,]+\s[a-zA-Z.,]+\b/)) {
           setValidForm(true);
-        }else{
+        } else {
           setValidForm(false);
         }
-      }else{
+      } else {
         setValidForm(true);
       }
-    }else{
+    } else {
       setValidForm(false);
     }
   }
+
+  const submit = (e) => {
+    e.preventDefault();
+
+    const template = {
+      name: name,
+      answer: response,
+      plus1: plusOne,
+      plus1Name: plusOneName,
+      dietaryRestrictions: dietaryRestrictions,
+      toEmail: email,
+    };
+
+    emailjs
+      .send(
+        "service_k5d0bhr",
+        "template_ssyqv2q",
+        template,
+        process.env.REACT_APP_EMAIL_JS_PUBLIC_KEY
+      )
+      .then(
+        function (response) {
+          console.log("Success", response.status, response.text);
+        },
+        function (error) {
+          console.log("Failure", error);
+        }
+      );
+  };
 
   let content = (
     <Container maxWidth="xs">
@@ -140,6 +175,16 @@ const RSVP = () => {
               color="secondary"
               value={name}
               onChange={handleName}
+            />
+          </Grid>
+          <Grid item>
+            <TextField
+              fullWidth
+              label="Email (Optional)"
+              variant="outlined"
+              color="secondary"
+              value={email}
+              onChange={handleEmail}
             />
           </Grid>
           <StyledGridItem item>
@@ -199,6 +244,7 @@ const RSVP = () => {
               variant="contained"
               color="secondary"
               disabled={!validForm}
+              onClick={submit}
             >
               Submit
             </Button>

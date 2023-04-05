@@ -103,19 +103,21 @@ const Story = () => {
             <Typography variant="h6">
               From Overland Park, KS to Arlington, VA, mine and Haley's story
               spans thousands of miles and nearly ten years. We became close
-              friends in our junior year of high school while sitting together
-              in Spanish class (thanks, Senora Tritt!), and after a short summer
-              of <em>the friendzone</em>, started dating. When graduation came,
-              Haley chose to spend her next four years at Alabama, while I chose
-              Iowa State, and so the dreaded long distance- 886 miles, to be
-              exact- began. Four years of Facetime, insomnia cookies, long
-              flights, and a couple of degrees later, we landed in Virginia,
-              where Haley began working as a Cardiovascular ICU Nurse in
-              Washington, DC, and I began my Software Engineering career. Along
-              the way, many visits and amazing memories were made; Alabama
-              football games, freezing walks across the Iowa State campus, a few
-              surprises, a summer in Colorado. Now we are ready to get married
-              and continue to create many more.
+              friends during our junior year of high school while sitting
+              together in Spanish class (thanks, Senora Tritt!) After a short
+              summer of <em>the friendzone</em>, we started dating. When
+              graduation came, Haley chose to spend her next four years at
+              Alabama, while I chose Iowa State. The dreaded long-distance
+              relationship - 886 miles, to be exact - began. Four years of
+              Facetime, insomnia cookies, long flights, and a couple of degrees
+              later, we landed in Virginia, where Haley began working as a
+              Cardiovascular ICU Nurse in Washington, DC, and I began my
+              Software Engineering career. Along the way, many visits and
+              amazing memories were made; attending Alabama football games,
+              walking across the frigid Iowa State campus, surprising each other
+              with visits, and spending a summer interning (and exploring) in
+              Colorado. Now we are ready to get married and continue to create a
+              lifetime of special memories together.
             </Typography>
           </StoryContainer>
         </Grid>

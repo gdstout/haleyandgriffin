@@ -104,7 +104,7 @@ const Story = () => {
               From Overland Park, KS to Arlington, VA, mine and Haley's story
               spans thousands of miles and nearly ten years. We became close
               friends during our junior year of high school while sitting
-              together in Spanish class (thanks, Senora Tritt!) After a short
+              together in Spanish class (thanks, Senora Tritt!). After a short
               summer of <em>the friendzone</em>, we started dating. When
               graduation came, Haley chose to spend her next four years at
               Alabama, while I chose Iowa State. The dreaded long-distance

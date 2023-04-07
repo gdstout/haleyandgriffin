@@ -124,7 +124,7 @@ const RSVP = () => {
     setInSubmission(true);
     setSubmitResult(0);
 
-    const template = {
+    const formTemplate = {
       name: name,
       answer: response,
       plus1: plusOne,
@@ -137,7 +137,7 @@ const RSVP = () => {
       .send(
         "service_k5d0bhr",
         "template_ssyqv2q",
-        template,
+        formTemplate,
         process.env.REACT_APP_EMAIL_JS_PUBLIC_KEY
       )
       .then(
@@ -277,32 +277,35 @@ const RSVP = () => {
           </>
         )}
         {submitResult !== 0 && (
-          <Grid item>
+          <>
             {submitResult === 1 && (
               <>
-                <Typography align="center" color="secondary">
-                  <MarkEmailReadTwoToneIcon
-                    color="secondary"
-                    fontSize="large"
-                  />
-                  <br />
-                  We've received your RSVP! Thank you.
-                  <br />
+                <Grid item>
+                  <Typography align="center" color="secondary">
+                    <MarkEmailReadTwoToneIcon
+                      color="secondary"
+                      fontSize="large"
+                    />
+                    <br />
+                    We've received your RSVP! Thank you.
+                  </Typography>
+                </Grid>
+                <Grid item>
                   <Tooltip
                     title="If you need to alter your RSVP, please contact us at rsvphaleyandgriffin@gmail.com"
                     arrow
                     enterTouchDelay={0}
                     leaveTouchDelay={10000}
                   >
-                    <SmallTypography>
+                    <SmallTypography align="center">
                       Help! I've made a mistake!
                     </SmallTypography>
                   </Tooltip>
-                </Typography>
+                </Grid>
               </>
             )}
             {submitResult === 2 && (
-              <>
+              <Grid item>
                 <Typography align="center" color="error">
                   <CancelScheduleSendTwoToneIcon
                     color="error"
@@ -313,13 +316,13 @@ const RSVP = () => {
                 </Typography>
                 {failedSubmissions > 1 && (
                   <Typography align="center">
-                    If this error persists, please reach out or manually RSVP at
+                    If this error persists, please manually RSVP or reach out at
                     rsvphaleyandgriffin@gmail.com
                   </Typography>
                 )}
-              </>
+              </Grid>
             )}
-          </Grid>
+          </>
         )}
       </FormGrid>
     </Container>

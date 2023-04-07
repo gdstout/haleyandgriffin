@@ -264,7 +264,7 @@ const Travel = () => {
                         <br/>
                         {location.address}
                         <br />
-                        <a href={location.mapsUrl}>Open Maps</a>
+                        <StyledLink href="#">Open Maps</StyledLink>
                       </div>
                     </InfoWindow>
                   )}

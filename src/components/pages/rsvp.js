@@ -28,8 +28,8 @@ const StyledGridItem = styled(Grid)({
 
 const SmallTypography = styled(Typography)({
   fontSize: "12px",
-  textDecoration: "underline"
-})
+  textDecoration: "underline",
+});
 
 const RSVP = () => {
   const [password, setPassword] = useState("");
@@ -46,7 +46,9 @@ const RSVP = () => {
 
   const [inSubmission, setInSubmission] = useState(false);
   //0 = not submitted yet, 1 = success, 2 = failure
-  const [submitResult, setSubmitResult] = useState(JSON.parse(localStorage.getItem('has-rsvpd')) || 0);
+  const [submitResult, setSubmitResult] = useState(
+    JSON.parse(localStorage.getItem("has-rsvpd")) || 0
+  );
   const [failedSubmissions, setFailedSubmissions] = useState(0);
 
   const handlePasswordInput = (e) => {
@@ -143,7 +145,7 @@ const RSVP = () => {
           console.log("Success", response.status, response.text);
           setSubmitResult(1);
           setInSubmission(false);
-          localStorage.setItem('has-rsvpd', JSON.stringify(1));
+          localStorage.setItem("has-rsvpd", JSON.stringify(1));
         },
         function (error) {
           console.log("Failure", error);
@@ -286,22 +288,35 @@ const RSVP = () => {
                   <br />
                   We've received your RSVP! Thank you.
                   <br />
-                  <Tooltip title="If you need to alter your RSVP, please contact us at rsvphaleyandgriffin@gmail.com" arrow>
-                    <SmallTypography>Help! I've made a mistake!</SmallTypography>
+                  <Tooltip
+                    title="If you need to alter your RSVP, please contact us at rsvphaleyandgriffin@gmail.com"
+                    arrow
+                    enterTouchDelay={0}
+                    leaveTouchDelay={10000}
+                  >
+                    <SmallTypography>
+                      Help! I've made a mistake!
+                    </SmallTypography>
                   </Tooltip>
                 </Typography>
               </>
             )}
             {submitResult === 2 && (
               <>
-              <Typography align="center" color="error">
-                <CancelScheduleSendTwoToneIcon color="error" fontSize="large" />
-                <br />
-                Something went wrong, please try again in a few moments.
-              </Typography>
-              {failedSubmissions > 1 && (
-                <Typography align="center">If this error persists, please reach out or manually RSVP at rsvphaleyandgriffin@gmail.com</Typography>
-              )}
+                <Typography align="center" color="error">
+                  <CancelScheduleSendTwoToneIcon
+                    color="error"
+                    fontSize="large"
+                  />
+                  <br />
+                  Something went wrong, please try again in a few moments.
+                </Typography>
+                {failedSubmissions > 1 && (
+                  <Typography align="center">
+                    If this error persists, please reach out or manually RSVP at
+                    rsvphaleyandgriffin@gmail.com
+                  </Typography>
+                )}
               </>
             )}
           </Grid>

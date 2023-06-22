@@ -7,6 +7,12 @@ import PinDropIcon from "@mui/icons-material/PinDrop";
 import CalendarTodayIcon from "@mui/icons-material/Event";
 import WeddingTimeline from "../wedding_timeline";
 
+import CheckroomRoundedIcon from "@mui/icons-material/CheckroomRounded";
+import AirportShuttleRoundedIcon from "@mui/icons-material/AirportShuttleRounded";
+import SportsBarIcon from "@mui/icons-material/SportsBar";
+import LocalDiningIcon from "@mui/icons-material/LocalDining";
+import PeopleOutlineRoundedIcon from '@mui/icons-material/PeopleOutlineRounded';
+
 const PageContainer = styled(Container)(({ theme }) => ({
   [theme.breakpoints.down("lg")]: {
     padding: "6px",
@@ -86,7 +92,7 @@ const Details = () => {
                     <CalendarTodayIcon color="secondary" />
                   </InfoLineItem>
                   <InfoLineItem2>
-                    <Typography>November, 2023</Typography>
+                    <Typography>November 17th, 2023</Typography>
                   </InfoLineItem2>
                 </InfoLine>
               </Grid>
@@ -120,11 +126,12 @@ const Details = () => {
                 <Typography variant="body1">
                   Sitting just north of beautifully quaint Parkville, Missouri,
                   this chapel and event space is perfect for our wedding day.
-                  With the ever-changing weather of the Kansas City area, a quick 50
-                  yard walk from ceremony to reception will lend itself to any
-                  condition. In the case of a pleasant fall day, the sprawling lawn
-                  and covered deck of the reception hall will be a wonderful
-                  place to enjoy a cocktail before the reception starts.
+                  With the ever-changing weather of the Kansas City area, a
+                  quick 50 yard walk from ceremony to reception will lend itself
+                  to any condition. In the case of a pleasant fall day, the
+                  sprawling lawn and covered deck of the reception hall will be
+                  a wonderful place to enjoy a cocktail before the reception
+                  starts.
                 </Typography>
               </Grid>
             </Grid>
@@ -145,8 +152,91 @@ const Details = () => {
               <Typography variant="h4">Timeline</Typography>
             </Grid>
             <Grid item xs={12}>
-              <Typography>Please check back when you get an invitation to see our timeline!</Typography>
-              {/*<WeddingTimeline />*/}
+              <WeddingTimeline />
+            </Grid>
+            <Grid item xs={12}>
+              <Typography variant="h4">FAQs</Typography>
+            </Grid>
+            <Grid item xs={12}>
+              <Typography variant="subtitle1">What should I wear?</Typography>
+              <InfoWrapper>
+                <InfoLine>
+                  <InfoLineItem>
+                    <CheckroomRoundedIcon color="secondary" />
+                  </InfoLineItem>
+                  <InfoLineItem2>
+                    <Typography>
+                      Please dress in cocktail/formal attire. Please refer to{" "}
+                      <StyledLink
+                        href="https://www.brides.com/story/wedding-dress-code-explained"
+                        target="_blank"
+                        rel="noreferrer"
+                      >
+                        this guide
+                      </StyledLink>{" "}
+                      with any questions.
+                    </Typography>
+                  </InfoLineItem2>
+                </InfoLine>
+              </InfoWrapper>
+              <Typography variant="subtitle1">How can I get there?</Typography>
+              <InfoWrapper>
+                <InfoLine>
+                  <InfoLineItem>
+                    <AirportShuttleRoundedIcon color="secondary" />
+                  </InfoLineItem>
+                  <InfoLineItem2>
+                    <Typography>
+                      Guests are able to park at the Hawthorne House overnight
+                      as long as vehicles are picked up the following morning.
+                      For those who do not have a car or may be drinking, we
+                      recommend uber or lyft.
+                    </Typography>
+                  </InfoLineItem2>
+                </InfoLine>
+              </InfoWrapper>
+              <Typography variant="subtitle1">Who can attend?</Typography>
+              <InfoWrapper>
+                <InfoLine>
+                  <InfoLineItem>
+                    <PeopleOutlineRoundedIcon color="secondary" />
+                  </InfoLineItem>
+                  <InfoLineItem2>
+                    <Typography>
+                    Refer to the RSVP card sent with your invitation regarding
+                    the number of seats we reserved in your name(s). While we
+                    love everyone in all of your families, this will be an adult
+                    only event.
+                    </Typography>
+                  </InfoLineItem2>
+                </InfoLine>
+              </InfoWrapper>
+              <Typography variant="subtitle1">Is it a cash bar?</Typography>
+              <InfoWrapper>
+                <InfoLine>
+                  <InfoLineItem>
+                    <SportsBarIcon color="secondary" />
+                  </InfoLineItem>
+                  <InfoLineItem2>
+                    <Typography>
+                      We will be providing an open bar for guests over the age
+                      of 21. Cash tips are welcome.
+                    </Typography>
+                  </InfoLineItem2>
+                </InfoLine>
+              </InfoWrapper>
+
+              <Typography variant="subtitle1">What's for dinner?</Typography>
+              <InfoWrapper>
+                <InfoLine>
+                  <InfoLineItem>
+                    <LocalDiningIcon color="secondary" />
+                  </InfoLineItem>
+                  <InfoLineItem2>
+                    <Typography>KC BBQ/American. Please note any dietary restrictions when you RSVP.</Typography>
+                  </InfoLineItem2>
+                </InfoLine>
+              </InfoWrapper>
             </Grid>
           </Grid>
         </Grid>

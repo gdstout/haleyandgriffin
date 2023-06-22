@@ -15,8 +15,8 @@ import emailjs from "@emailjs/browser";
 import MarkEmailReadTwoToneIcon from "@mui/icons-material/MarkEmailReadTwoTone";
 import CancelScheduleSendTwoToneIcon from "@mui/icons-material/CancelScheduleSendTwoTone";
 
-const formSinglePassword = "solo";
-const formPlusOnePassword = "plus1";
+const formSinglePassword = "hawthornehouse";
+const formPlusOnePassword = "h+g2023";
 
 const FormGrid = styled(Grid)({
   paddingTop: "25px",
@@ -166,7 +166,7 @@ const RSVP = () => {
         </Grid>
         <Grid item>
           <Typography align="center">
-            When you recieve an official invitation in the mail, come back here
+            When you receive an official invitation in the mail, come back here
             to RSVP.
           </Typography>
         </Grid>
@@ -251,16 +251,18 @@ const RSVP = () => {
               </Grid>
             )}
             {response === "Accept" && (
-              <Grid item>
-                <TextField
-                  fullWidth
-                  label="Dietary Restrictions"
-                  variant="outlined"
-                  color="secondary"
-                  value={dietaryRestrictions}
-                  onChange={handleDietaryRestrictions}
-                />
-              </Grid>
+              <>
+                <Grid item>
+                  <TextField
+                    fullWidth
+                    label="Dietary Restrictions"
+                    variant="outlined"
+                    color="secondary"
+                    value={dietaryRestrictions}
+                    onChange={handleDietaryRestrictions}
+                  />
+                </Grid>
+              </>
             )}
 
             <Grid item>

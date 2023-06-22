@@ -18,7 +18,7 @@ const startDate = DateTime.fromISO("2016-11-18");
 
 const daysLeft = weddingDate.diff(DateTime.now(), ["days"]).toObject();
 const totalTime = DateTime.now().diff(startDate, ["days"]).toObject();
-const timeEngaged = DateTime.now().diff(engagementDate, ["days"]).toObject();     
+const timeEngaged = DateTime.now().diff(engagementDate, ["days"]).toObject();
 
 const PageContainer = styled(Container)(({ theme }) => ({
   [theme.breakpoints.down("lg")]: {
@@ -26,7 +26,7 @@ const PageContainer = styled(Container)(({ theme }) => ({
   },
 }));
 
-const ImgContainer = styled("div")(({theme}) => ({
+const ImgContainer = styled("div")(({ theme }) => ({
   paddingTop: "30px",
   [theme.breakpoints.down("lg")]: {
     paddingTop: "0px",

@@ -14,43 +14,23 @@ const WeddingTimeline = () => {
     <Timeline >
         <TimelineItem>
           <TimelineOppositeContent color="text.secondary">
-            3:00 pm
+            4:00 - 4:30 pm
           </TimelineOppositeContent>
           <TimelineSeparator>
             <TimelineDot color="secondary"/>
             <TimelineConnector />
           </TimelineSeparator>
-          <TimelineContent>Arrive at chapel</TimelineContent>
+          <TimelineContent>Arrive at chapel and take seats</TimelineContent>
         </TimelineItem>
         <TimelineItem>
           <TimelineOppositeContent color="text.secondary">
-            3:30 pm
+            4:30 pm
           </TimelineOppositeContent>
           <TimelineSeparator>
             <TimelineDot color="secondary"/>
             <TimelineConnector />
           </TimelineSeparator>
           <TimelineContent>Ceremony begins</TimelineContent>
-        </TimelineItem>
-        <TimelineItem>
-          <TimelineOppositeContent color="text.secondary">
-            4:00 pm
-          </TimelineOppositeContent>
-          <TimelineSeparator>
-            <TimelineDot color="secondary"/>
-            <TimelineConnector />
-          </TimelineSeparator>
-          <TimelineContent>Ceremony ends, short walk to Emerson Room for cocktail hour</TimelineContent>
-        </TimelineItem>
-        <TimelineItem>
-          <TimelineOppositeContent color="text.secondary">
-            4:00 pm
-          </TimelineOppositeContent>
-          <TimelineSeparator>
-            <TimelineDot color="secondary"/>
-            <TimelineConnector />
-          </TimelineSeparator>
-          <TimelineContent>Pictures with family and wedding party</TimelineContent>
         </TimelineItem>
         <TimelineItem>
           <TimelineOppositeContent color="text.secondary">
@@ -64,17 +44,18 @@ const WeddingTimeline = () => {
         </TimelineItem>
         <TimelineItem>
           <TimelineOppositeContent color="text.secondary">
-            6:00 pm
+            6:00 - 6:30 pm
           </TimelineOppositeContent>
           <TimelineSeparator>
             <TimelineDot color="secondary"/>
             <TimelineConnector />
           </TimelineSeparator>
-          <TimelineContent>Somethin important happens at the reception</TimelineContent>
+          <TimelineContent>Dinner served</TimelineContent>
         </TimelineItem>
+
         <TimelineItem>
           <TimelineOppositeContent color="text.secondary">
-            11:00 pm
+            10:00 pm
           </TimelineOppositeContent>
           <TimelineSeparator>
             <TimelineDot color="secondary"/>

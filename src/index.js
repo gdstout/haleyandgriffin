@@ -39,6 +39,14 @@ let theme = createTheme({
     h4: {
       fontFamily: "Playfair Display",
     },
+    subtitle1: {
+      marginLeft: "4px",
+      marginTop: "18px",
+      fontFamily: "Playfair Display",
+      fontWeight: 600,
+      fontSize: "1em"
+
+    },
     fontFamily: "Nanum Myeongjo",
   },
   breakpoints: {

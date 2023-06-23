@@ -34,7 +34,7 @@ const WeddingTimeline = () => {
         </TimelineItem>
         <TimelineItem>
           <TimelineOppositeContent color="text.secondary">
-            5:00 pm
+            5:15 pm
           </TimelineOppositeContent>
           <TimelineSeparator>
             <TimelineDot color="secondary"/>

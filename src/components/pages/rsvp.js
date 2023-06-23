@@ -11,12 +11,13 @@ import {
 } from "@mui/material";
 import { styled } from "@mui/system";
 import React, { useState } from "react";
+import { NavLink } from "react-router-dom";
 import emailjs from "@emailjs/browser";
 import MarkEmailReadTwoToneIcon from "@mui/icons-material/MarkEmailReadTwoTone";
 import CancelScheduleSendTwoToneIcon from "@mui/icons-material/CancelScheduleSendTwoTone";
 
-const formSinglePassword = "hawthornehouse";
-const formPlusOnePassword = "h+g2023";
+const formSinglePassword = "rolltide";
+const formPlusOnePassword = "goclones";
 
 const FormGrid = styled(Grid)({
   paddingTop: "25px",
@@ -30,6 +31,16 @@ const SmallTypography = styled(Typography)({
   fontSize: "12px",
   textDecoration: "underline",
 });
+
+const PageLink = styled(NavLink)(({ theme }) => ({
+  textDecoration: "underline rgba(0, 0, 0, 0)",
+  color: theme.palette.secondary.main,
+  transition: "text-decoration-color 500ms",
+  "&:hover": {
+    color: "#000000",
+    textDecorationColor: "rgba(0, 0, 0, 1)",
+  },
+}));
 
 const RSVP = () => {
   const [password, setPassword] = useState("");
@@ -166,8 +177,8 @@ const RSVP = () => {
         </Grid>
         <Grid item>
           <Typography align="center">
-            When you receive an official invitation in the mail, come back here
-            to RSVP.
+            Please refer to your invitation for your RSVP password. All RSVPs
+            due by Sept. 30th.
           </Typography>
         </Grid>
         {submitResult !== 1 && (
@@ -303,6 +314,15 @@ const RSVP = () => {
                       Help! I've made a mistake!
                     </SmallTypography>
                   </Tooltip>
+                </Grid>
+                <Grid item>
+                  <br />
+                  <br />
+                  <Typography align="center">
+                    Check out day-of <PageLink to="/details">details</PageLink>,{" "} 
+                    KC <PageLink to="/travel">travel and hotel blocks</PageLink>, view
+                    our <PageLink to="/registry">registry</PageLink>, or read our <PageLink to="/story">story!</PageLink>
+                  </Typography>
                 </Grid>
               </>
             )}

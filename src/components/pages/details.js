@@ -220,7 +220,7 @@ const Details = () => {
                   <InfoLineItem2>
                     <Typography>
                       We will be providing an open bar for guests over the age
-                      of 21. Cash tips are welcome.
+                      of 21. Cash tips are encouraged.
                     </Typography>
                   </InfoLineItem2>
                 </InfoLine>

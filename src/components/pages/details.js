@@ -1,7 +1,7 @@
 import React from "react";
 import { styled } from "@mui/material/styles";
 import HawthorneHouse from "../../images/hawthornehouse1.jpg";
-import Chapel from "../../images/chapel1.jpg";
+import Chapel from "../../images/chapel2.jpg";
 import { Container, Divider, Grid, Typography } from "@mui/material";
 import PinDropIcon from "@mui/icons-material/PinDrop";
 import CalendarTodayIcon from "@mui/icons-material/Event";

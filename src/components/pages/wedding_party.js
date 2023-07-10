@@ -19,6 +19,7 @@ import Sam from "../../images/sam.png";
 import Laura from "../../images/laura.png";
 import Mike from "../../images/mike.png";
 import Emily from "../../images/emily.png";
+import Lea from "../../images/lea.png";
 
 const PageContainer = styled(Container)(({ theme }) => ({
   [theme.breakpoints.down("lg")]: {
@@ -75,9 +76,9 @@ const WeddingParty = () => {
             <Typography variant="h5">Logan van Reken</Typography>
             <Typography>Bridesmaid</Typography>
 
-            {/*<ImgStyled src={Sprig1} />
+            <ImgStyled src={Lea} />
             <Typography variant="h5">Lea Sophie Pfifer</Typography>
-  <Typography>Bridesmaid</Typography>*/}
+  <Typography>Bridesmaid</Typography>
           </Grid>
         </Grid>
         <Grid item xs={6}>

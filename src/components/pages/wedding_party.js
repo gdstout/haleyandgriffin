@@ -77,7 +77,7 @@ const WeddingParty = () => {
             <Typography>Bridesmaid</Typography>
 
             <ImgStyled src={Lea} />
-            <Typography variant="h5">Lea Sophie Pfifer</Typography>
+            <Typography variant="h5">Lea Sophie Pfeifer</Typography>
   <Typography>Bridesmaid</Typography>
           </Grid>
         </Grid>

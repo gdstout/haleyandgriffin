@@ -12,6 +12,7 @@ import Travel from "./pages/travel";
 import Registry from "./pages/registry";
 import RSVP from "./pages/rsvp";
 import Footer from "./footer";
+import Golf from "./pages/golf";
 
 const PageContainer = styled("div")({
   position: "relative",
@@ -47,6 +48,7 @@ const App = () => {
           <Route path="/weddingparty" element={<WeddingParty />} />
           <Route path="/registry" element={<Registry />} />
           <Route path="/rsvp" element={<RSVP />} />
+          <Route path="golf" element={<Golf />} />
         </SlideRoutes>
       </MainContainer>
 

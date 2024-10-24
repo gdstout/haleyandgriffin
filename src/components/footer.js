@@ -21,7 +21,7 @@ const Footer = () => {
   let content = (
     <FooterContainer>
       <FooterContent>
-        <Typography variant="body2">© Griffin Stout 2023</Typography>
+        <Typography variant="body2">© Griffin Stout 2024</Typography>
       </FooterContent>
     </FooterContainer>
   );

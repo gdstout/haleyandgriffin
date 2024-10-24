@@ -162,7 +162,7 @@ const Home = () => {
                 {" • "}
                 <PageLink to="/registry">REGISTRY</PageLink>
                 {" • "}
-                <PageLink to="/rsvp">RSVP</PageLink>
+                <PageLink to="/golf">GOLF</PageLink>
                 {" • "}
                 <PageLink onClick={togglePlay}>PLAY</PageLink>
               </Typography>

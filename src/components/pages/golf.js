@@ -1,8 +1,11 @@
 import {
   Button,
   Container,
+  FormHelperText,
   Grid,
   InputAdornment,
+  MenuItem,
+  Select,
   TextField,
   ToggleButton,
   ToggleButtonGroup,
@@ -11,8 +14,8 @@ import {
 import { useEffect, useState } from "react";
 
 const initialPlayers = [
-  { name: "", id: 1, holesWonO: [], holesLost: [] },
-  { name: "", id: 2, holesWonO: [], holesLost: [] },
+  { name: "", id: 1  },
+  { name: "", id: 2 },
 ];
 
 const Golf = () => {
@@ -24,10 +27,12 @@ const Golf = () => {
   const [players, setPlayers] = useState(initialPlayers);
   const [canStart, setCanStart] = useState(false);
   const [bet, setBet] = useState(4.0);
+  const [strokeCap, setStrokeCap] = useState(8);
 
   // hole states (1)
   const [currentHole, setCurrentHole] = useState(0);
   const [scores, setScores] = useState([]);
+  const [pars, setPars] = useState([]);
 
   // results states (2)
   const [payoutMatrix, setPayoutMatrix] = useState([[], []]);
@@ -39,6 +44,16 @@ const Golf = () => {
 
   const handleBetChange = (e) => {
     setBet(parseFloat(e.target.value));
+  };
+
+  const handleStrokeCapChange = (e) => {
+    setStrokeCap(parseInt(e.target.value));
+  };
+
+  const handleParsChange = (i) => (e) => {
+    let newPars = structuredClone(pars);
+    newPars[i] = e.target.value;
+    setPars(newPars);
   };
 
   const handleNumPlayersChange = (e) => {
@@ -93,6 +108,9 @@ const Golf = () => {
         losers: [],
       });
       setHoleResults(blankHoleResults);
+
+      const blankPars = Array(parseInt(numHoles)).fill(4);
+      setPars(blankPars);
     }
     setPage(i);
   };
@@ -113,7 +131,7 @@ const Golf = () => {
     setScores(newScores);
   };
 
-  // calculate bet payouts every time the score changes
+  // calculate bet payouts and player scores every time the score changes
   useEffect(() => {
     let newHoleResults = structuredClone(holeResults);
 
@@ -190,6 +208,16 @@ const Golf = () => {
     return tmpPayoutMatrix;
   }
 
+  function getPlayerScore(i) {
+    let curScore = 0;
+    let par = 0;
+    for(let j = 0; j <= currentHole; j ++){
+      par = par + pars[j];
+      curScore = curScore + scores[j][i];
+    }
+    return {score: curScore - par, strokes: curScore};
+  }
+
   const handleNext = () => {
     if (currentHole < parseInt(numHoles) - 1) {
       setCurrentHole(currentHole + 1);
@@ -256,6 +284,20 @@ const Golf = () => {
               ></TextField>
             </Grid>
             <Grid item>
+              <Typography variant="h5">Stroke Cap</Typography>
+            </Grid>
+            <Grid item>
+              <TextField
+                fullWidth
+                label="Cap"
+                type="number"
+                variant="filled"
+                color="secondary"
+                value={strokeCap}
+                onChange={handleStrokeCapChange}
+              ></TextField>
+            </Grid>
+            <Grid item>
               <Typography variant="h5">Players</Typography>
             </Grid>
             <Grid item>
@@ -297,7 +339,28 @@ const Golf = () => {
         {page === 1 && (
           <>
             <Grid item>
-              <Typography variant="h5">Hole {currentHole + 1}</Typography>
+              <Grid
+                container
+                direction="row"
+                justifyContent="space-between"
+                alignItems="center"
+              >
+                <Grid item>
+                  <Typography variant="h5">Hole {currentHole + 1}</Typography>
+                </Grid>
+                <Grid item>
+                  <Select
+                    color="secondary"
+                    size="small"
+                    onChange={handleParsChange(currentHole)}
+                    value={pars[currentHole]}
+                  >
+                    <MenuItem value={3}>3</MenuItem>
+                    <MenuItem value={4}>4</MenuItem>
+                    <MenuItem value={5}>5</MenuItem>
+                  </Select>
+                </Grid>
+              </Grid>
             </Grid>
             {scores[currentHole].map((score, i) => (
               <Grid item key={i}>
@@ -361,15 +424,18 @@ const Golf = () => {
             <Grid item>
               <Typography variant="h5">Results</Typography>
             </Grid>
+            {players.map((player, i) => (
+              <Grid item key={player.name}>
+                <Typography>{player.name}: {getPlayerScore(i).strokes} ({getPlayerScore(i).score > 0 && (<>+</>)}{getPlayerScore(i).score})</Typography>
+              </Grid>
+            ))}
             {payoutMatrix.map((loser, i) => (
               <>
                 {loser.map((amount, j) => (
                   <>
                     {i !== j && amount > 0 ? (
-                      <Grid item key={`${players[i].id} yeet ${players[j].id}`}>
-                        <Typography
-                          key={`${players[i].id} yeet2 ${players[j].id}`}
-                        >
+                      <Grid item>
+                        <Typography>
                           {players[i].name} owes {players[j].name} ${amount}
                         </Typography>
                       </Grid>

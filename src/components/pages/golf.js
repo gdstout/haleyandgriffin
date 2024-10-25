@@ -213,7 +213,11 @@ const Golf = () => {
     let par = 0;
     for(let j = 0; j <= currentHole; j ++){
       par = par + pars[j];
-      curScore = curScore + scores[j][i];
+      if(scores[j][i] > strokeCap){
+        curScore = curScore + strokeCap;
+      } else {
+        curScore = curScore + scores[j][i];
+      }
     }
     return {score: curScore - par, strokes: curScore};
   }
@@ -424,11 +428,17 @@ const Golf = () => {
             <Grid item>
               <Typography variant="h5">Results</Typography>
             </Grid>
+            <Grid item>
+              <Typography><strong>Scores</strong></Typography>
+            </Grid>
             {players.map((player, i) => (
               <Grid item key={player.name}>
                 <Typography>{player.name}: {getPlayerScore(i).strokes} ({getPlayerScore(i).score > 0 && (<>+</>)}{getPlayerScore(i).score})</Typography>
               </Grid>
             ))}
+            <Grid item>
+              <Typography><strong>Payouts</strong></Typography>
+            </Grid>
             {payoutMatrix.map((loser, i) => (
               <>
                 {loser.map((amount, j) => (

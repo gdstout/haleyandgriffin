@@ -211,15 +211,17 @@ const Golf = () => {
   function getPlayerScore(i) {
     let curScore = 0;
     let par = 0;
+    let bogey = 0;
     for(let j = 0; j <= currentHole; j ++){
       par = par + pars[j];
+      bogey = bogey + pars[j] + 1;
       if(scores[j][i] > strokeCap){
         curScore = curScore + strokeCap;
       } else {
         curScore = curScore + scores[j][i];
       }
     }
-    return {score: curScore - par, strokes: curScore};
+    return {score: curScore - par, strokes: curScore, bogeyGolf: curScore - bogey};
   }
 
   const handleNext = () => {
@@ -426,7 +428,7 @@ const Golf = () => {
         {page > 0 && (
           <>
             <Grid item>
-              <Typography variant="h5">Results</Typography>
+              <Typography variant="h5">Results Through {currentHole + 1}</Typography>
             </Grid>
             <Grid item>
               <Typography><strong>Scores</strong></Typography>
@@ -455,6 +457,14 @@ const Golf = () => {
                   </>
                 ))}
               </>
+            ))}
+            <Grid item>
+              <Typography><strong>Bogey Golf Standings</strong></Typography>
+            </Grid>
+            {players.map((player, i) => (
+              <Grid item key={player.name}>
+                <Typography>{player.name}: ({getPlayerScore(i).bogeyGolf > 0 && (<>+</>)}{getPlayerScore(i).bogeyGolf})</Typography>
+              </Grid>
             ))}
           </>
         )}

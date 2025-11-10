@@ -105,10 +105,38 @@ export const updateWishlist = async (wishlist, id) => {
       throw new Error(`Error updating wishlist: ${text}`);
     } 
     const data = await response.json();
-    console.log("Updated wishlist data:", data);
     return data;
   } catch (e) {
     console.error("Error updating wishlist:", e);
     throw e;
   }
 };
+
+export const deleteWishlist = async (id) => {
+  try {
+    const apiKey = process.env.REACT_APP_JSONBIN_API_ACCESS_KEY;
+    if (!apiKey) {
+      throw new Error("Missing API key");
+    }
+
+    const response = await fetch(`https://api.jsonbin.io/v3/b/${id}`, {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+        "X-Access-Key": apiKey,
+      },
+    });
+
+    if(!response.ok){
+      const text = await response.text();
+      throw new Error(`Error deleting wishlist: ${text}`);
+    }
+
+    const data = await response.json();
+    console.log(data);
+    return data;
+  } catch (e) {
+    console.error("Error deleting wishlist:", e);
+    throw e;
+  }
+}

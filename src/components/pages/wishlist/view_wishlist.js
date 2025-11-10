@@ -10,20 +10,28 @@ import {
   InputAdornment,
   CircularProgress,
   Container,
+  Dialog,
+  DialogTitle,
+  DialogActions,
+  DialogContent,
 } from "@mui/material";
-import { getWishlist, updateWishlist } from "./wishlist_utils";
+import { deleteWishlist, getWishlist, updateWishlist } from "./wishlist_utils";
 import { Fragment, useEffect, useState } from "react";
 import {
   AddCircle,
   ArrowCircleRight,
   ArrowDropDown,
   ArrowDropUp,
+  Circle,
   Forward,
   RemoveCircle,
   VerifiedUser,
 } from "@mui/icons-material";
+import { useNavigate } from "react-router";
 
 export const ViewWishlist = ({ id }) => {
+  const navigate = useNavigate();
+
   const [wishlist, setWishlist] = useState(null);
   const [loading, setLoading] = useState(true);
   const [loadingUpdate, setLoadingUpdate] = useState(false);
@@ -105,22 +113,22 @@ export const ViewWishlist = ({ id }) => {
   };
 
   const handleMoveSection = (index, upOrDown) => {
-    if(index === 0 && upOrDown === -1){
+    if (index === 0 && upOrDown === -1) {
       return;
     }
-    if(index === wishlist.record.sections.length - 1 && upOrDown === 1){
+    if (index === wishlist.record.sections.length - 1 && upOrDown === 1) {
       return;
     }
 
     setWishlist((prev) => {
-      if(!prev) return;
+      if (!prev) return;
       const copy = structuredClone(prev);
       const tmp = copy.record.sections[index + upOrDown];
       copy.record.sections[index + upOrDown] = copy.record.sections[index];
       copy.record.sections[index] = tmp;
       return copy;
-    })
-  }
+    });
+  };
 
   const handleRemoveSection = (index) => {
     console.log("removing section", index);
@@ -202,6 +210,27 @@ export const ViewWishlist = ({ id }) => {
     navigator.clipboard.writeText(window.location.href);
   };
 
+  // DELETE WISHLIST DIALOG STATE
+  const [deleteDialogOpen, setDeleteDialogOpen] = useState(false);
+
+  const handleDeleteWishlist = async () => {
+    console.log("deleting wishlist", id);
+    setLoadingUpdate(true);
+    setError(null);
+
+    try {
+      const data = await deleteWishlist(id);
+    } catch (e) {
+      setError("Failed to delete wishlist!");
+    } finally {
+      setLoadingUpdate(false);
+      setWishlist(null);
+      localStorage.removeItem("my_wishlist_id");
+      setDeleteDialogOpen(false);
+      navigate("/wishlist");
+    }
+  };
+
   let content = (
     <>
       {loading && (
@@ -235,7 +264,7 @@ export const ViewWishlist = ({ id }) => {
               <strong>Is this your wishlist?</strong>
             </Typography>
             <Typography fontSize="11px">
-              No peeking: the Checkbox Surveillance Squad is on duty.
+              No peeking! Santa's Checkbox Surveillance Squad is on duty.
             </Typography>
           </Grid>
           <Grid item>
@@ -310,10 +339,16 @@ export const ViewWishlist = ({ id }) => {
                   >
                     <strong>{section.title}</strong>
                     <IconButton size="small">
-                      <ArrowDropUp onClick={() => handleMoveSection(sectionIndex, -1)} color="secondary"/>
+                      <ArrowDropUp
+                        onClick={() => handleMoveSection(sectionIndex, -1)}
+                        color="secondary"
+                      />
                     </IconButton>
                     <IconButton size="small">
-                      <ArrowDropDown onClick={() => handleMoveSection(sectionIndex, 1)} color="secondary"/>
+                      <ArrowDropDown
+                        onClick={() => handleMoveSection(sectionIndex, 1)}
+                        color="secondary"
+                      />
                     </IconButton>
                   </Typography>
                 </Grid>
@@ -426,6 +461,25 @@ export const ViewWishlist = ({ id }) => {
               )}
             </Fragment>
           ))}
+          {id !== myWishlistId && (
+            <>
+              <Grid item marginTop="48px">
+                <Divider />
+              </Grid>
+              <Grid item>
+                <Button
+                  fullWidth
+                  color="secondary"
+                  sx={{ textTransform: "none" }}
+                  size="small"
+                  variant="outlined"
+                  onClick={() => navigate("/wishlist")}
+                >
+                  Make my own wishlist!
+                </Button>
+              </Grid>
+            </>
+          )}
           {id === myWishlistId && (
             <>
               <Grid item>
@@ -483,6 +537,49 @@ export const ViewWishlist = ({ id }) => {
                     "Save"
                   )}
                 </Button>
+              </Grid>
+              <Grid item>
+                <Button
+                  color="error"
+                  variant="outlined"
+                  fullWidth
+                  onClick={() => setDeleteDialogOpen(true)}
+                >
+                  Delete
+                </Button>
+                <Dialog
+                  open={deleteDialogOpen}
+                  onClose={() => setDeleteDialogOpen(false)}
+                >
+                  <DialogTitle>
+                    <strong>Delete Wishlist?</strong>
+                  </DialogTitle>
+                  <DialogContent>
+                    Are you sure you want to delete this wishlist? This action
+                    cannot be undone.
+                  </DialogContent>
+                  <DialogActions>
+                    <Button
+                      color="secondary"
+                      variant="contained"
+                      onClick={() => setDeleteDialogOpen(false)}
+                    >
+                      No
+                    </Button>
+                    <Button
+                      color="error"
+                      variant="outlined"
+                      onClick={() => handleDeleteWishlist()}
+                      disabled={loadingUpdate}
+                    >
+                      {loadingUpdate ? (
+                        <CircularProgress size="25px" color="error" />
+                      ) : (
+                        "Delete"
+                      )}
+                    </Button>
+                  </DialogActions>
+                </Dialog>
               </Grid>
             </>
           )}

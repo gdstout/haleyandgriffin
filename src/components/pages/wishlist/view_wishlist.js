@@ -527,11 +527,11 @@ export const ViewWishlist = ({ id }) => {
                       <TextField
                         fullWidth
                         helperText={!(newItemLinkValues[sectionIndex] || "")
-                            .trim()
-                            .startsWith("http") && "Links have to start with http"}
+                            .trim().toLowerCase()
+                            .startsWith("http") && "Links start with http"}
                         error={
                           !(newItemLinkValues[sectionIndex] || "")
-                            .trim()
+                            .trim().toLowerCase()
                             .startsWith("http")
                         }
                         size="small"

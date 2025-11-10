@@ -52,7 +52,7 @@ const ImgStyled = styled("img")({
   borderRadius: "5px",
 });
 
-const PageLink = styled(NavLink)(({ theme }) => ({
+export const PageLink = styled(NavLink)(({ theme }) => ({
   textDecoration: "underline rgba(0, 0, 0, 0)",
   color: theme.palette.secondary.main,
   transition: "text-decoration-color 500ms",

@@ -13,6 +13,7 @@ import Registry from "./pages/registry";
 import RSVP from "./pages/rsvp";
 import Footer from "./footer";
 import Golf from "./pages/golf";
+import { Wishlist } from "./pages/wishlist";
 
 const PageContainer = styled("div")({
   position: "relative",
@@ -49,6 +50,7 @@ const App = () => {
           <Route path="/registry" element={<Registry />} />
           <Route path="/rsvp" element={<RSVP />} />
           <Route path="golf" element={<Golf />} />
+          <Route path="/wishlist/:id?" element={<Wishlist />} />
         </SlideRoutes>
       </MainContainer>
 

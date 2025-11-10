@@ -438,17 +438,17 @@ export const ViewWishlist = ({ id }) => {
                               }}
                             >
                               {item.link ? (
-                              <Link
-                                color="secondary"
-                                href={item.link}
-                                target="_blank"
-                                rel="noreferrer"
-                              >
-                                {item.name}
-                              </Link>
-                            ) : (
-                              item.name
-                            )}
+                                <Link
+                                  color="secondary"
+                                  href={item.link}
+                                  target="_blank"
+                                  rel="noreferrer"
+                                >
+                                  {item.name}
+                                </Link>
+                              ) : (
+                                item.name
+                              )}
                             </Typography>
                           }
                           labelPlacement="end"
@@ -473,8 +473,14 @@ export const ViewWishlist = ({ id }) => {
                       }
                       onKeyDown={(e) => {
                         if (
-                          e.key === "Enter" &&
-                          (newItemValues[sectionIndex] || "").trim().length > 1
+                          (e.key === "Enter" &&
+                            (newItemValues[sectionIndex] || "").trim().length >
+                              1) &&
+                          (newItemLinkValues[sectionIndex] !== undefined &&
+                            ((newItemLinkValues[sectionIndex] || "")
+                              .trim()
+                              .toLowerCase()
+                              .startsWith("http")))
                         ) {
                           e.preventDefault();
                           handleAddItem(sectionIndex);
@@ -511,7 +517,13 @@ export const ViewWishlist = ({ id }) => {
                                   !(
                                     (newItemValues[sectionIndex] || "").trim()
                                       .length > 1
-                                  )
+                                  ) ||
+                                  (newItemLinkValues[sectionIndex] !==
+                                    undefined &&
+                                    !(newItemLinkValues[sectionIndex] || "")
+                                      .trim()
+                                      .toLowerCase()
+                                      .startsWith("http"))
                                 }
                               >
                                 <AddCircle />
@@ -526,12 +538,16 @@ export const ViewWishlist = ({ id }) => {
                     <Grid item>
                       <TextField
                         fullWidth
-                        helperText={!(newItemLinkValues[sectionIndex] || "")
-                            .trim().toLowerCase()
-                            .startsWith("http") && "Links start with http"}
+                        helperText={
+                          !(newItemLinkValues[sectionIndex] || "")
+                            .trim()
+                            .toLowerCase()
+                            .startsWith("http") && "Links start with http"
+                        }
                         error={
                           !(newItemLinkValues[sectionIndex] || "")
-                            .trim().toLowerCase()
+                            .trim()
+                            .toLowerCase()
                             .startsWith("http")
                         }
                         size="small"

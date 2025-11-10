@@ -13,7 +13,12 @@ import {
 } from "@mui/material";
 import { getWishlist, updateWishlist } from "./wishlist_utils";
 import { Fragment, useEffect, useState } from "react";
-import { AddCircle, ArrowCircleRight, Forward, RemoveCircle } from "@mui/icons-material";
+import {
+  AddCircle,
+  ArrowCircleRight,
+  Forward,
+  RemoveCircle,
+} from "@mui/icons-material";
 
 export const ViewWishlist = ({ id }) => {
   const [wishlist, setWishlist] = useState(null);
@@ -146,6 +151,32 @@ export const ViewWishlist = ({ id }) => {
     });
   };
 
+  // handle checkbox updates live
+  const toggleCheckbox = async (sectionIndex, itemIndex) => {
+    setLoadingUpdate(true);
+    setError(null);
+    if (
+      sectionIndex < 0 ||
+      sectionIndex >= wishlist.record.sections.length ||
+      itemIndex < 0 ||
+      itemIndex >= wishlist.record.sections[sectionIndex].items.length
+    )
+      return;
+
+    const copy = structuredClone(wishlist);
+    copy.record.sections[sectionIndex].items[itemIndex].checked =
+        !copy.record.sections[sectionIndex].items[itemIndex].checked;
+    setWishlist(copy);
+    try {
+      const data = await updateWishlist(copy, id);
+      setWishlist(data);
+    } catch (err) {
+      setError("Failed to update wishlist");
+    } finally {
+      setLoadingUpdate(false);
+    }
+  };
+
   const copyToClipboard = () => {
     navigator.clipboard.writeText(window.location.href);
   };
@@ -179,8 +210,12 @@ export const ViewWishlist = ({ id }) => {
             </Button>
           </Grid>
           <Grid item>
-            <Typography><strong>Is this your wishlist?</strong></Typography>
-            <Typography fontSize="11px">No peeking: the Checkbox Surveillance Squad is on duty.</Typography>
+            <Typography>
+              <strong>Is this your wishlist?</strong>
+            </Typography>
+            <Typography fontSize="11px">
+              No peeking: the Checkbox Surveillance Squad is on duty.
+            </Typography>
           </Grid>
           <Grid item>
             <Button
@@ -217,7 +252,6 @@ export const ViewWishlist = ({ id }) => {
                       disabled={passwordValue !== wishlist.record.password}
                     >
                       <ArrowCircleRight />
-                      
                     </IconButton>
                   </InputAdornment>
                 ),
@@ -241,28 +275,28 @@ export const ViewWishlist = ({ id }) => {
               Copy Wishlist Link
             </Button>
           </Grid>
-          {wishlist.record.sections?.map((section, index) => (
-            <Fragment key={index + section.title}>
+          {wishlist.record.sections?.map((section, sectionIndex) => (
+            <Fragment key={sectionIndex + section.title}>
               {id === myWishlistId ? (
-                <Grid item key={index + section.title}>
+                <Grid item key={sectionIndex + section.title}>
                   <Typography
                     variant="h6"
                     paddingTop="12px"
                     sx={{ cursor: "pointer" }}
-                    onDoubleClick={() => handleRemoveSection(index)}
+                    onDoubleClick={() => handleRemoveSection(sectionIndex)}
                   >
                     {section.title}
                   </Typography>
                 </Grid>
               ) : (
-                <Grid item key={index + section.title}>
+                <Grid item key={sectionIndex + section.title}>
                   <Typography variant="h6" paddingTop="12px">
-                    {section.title}
+                    <strong>{section.title}</strong>
                   </Typography>
                 </Grid>
               )}
 
-              <Grid item key={index + section.title + "list"}>
+              <Grid item key={sectionIndex + section.title + "list"}>
                 {section.items?.map((item, itemIndex) => (
                   <Fragment key={item.name + itemIndex}>
                     {id === myWishlistId ? (
@@ -275,7 +309,7 @@ export const ViewWishlist = ({ id }) => {
                         <Grid item xs={2} paddingRight="10px">
                           <IconButton
                             color="error"
-                            onClick={() => handleRemoveItem(index, itemIndex)}
+                            onClick={() => handleRemoveItem(sectionIndex, itemIndex)}
                           >
                             <RemoveCircle />
                           </IconButton>
@@ -290,11 +324,16 @@ export const ViewWishlist = ({ id }) => {
                           key={item.name + itemIndex}
                           control={
                             <Checkbox
+                              sx={{ marginLeft: "12px" }}
                               color="secondary"
                               checked={item.checked}
+                              disabled={loadingUpdate}
+                              onClick={() =>
+                                toggleCheckbox(sectionIndex, itemIndex)
+                              }
                             ></Checkbox>
                           }
-                          label={item.name}
+                          label={<Typography sx={{textDecoration:item.checked ? "line-through" : "none"}}>{item.name}</Typography>}
                           labelPlacement="end"
                         />
                       </div>
@@ -310,15 +349,15 @@ export const ViewWishlist = ({ id }) => {
                     variant="outlined"
                     color="secondary"
                     label="New Item"
-                    value={newItemValues[index] || ""}
-                    onChange={(e) => handleNewItemChange(index, e.target.value)}
+                    value={newItemValues[sectionIndex] || ""}
+                    onChange={(e) => handleNewItemChange(sectionIndex, e.target.value)}
                     onKeyDown={(e) => {
                       if (
                         e.key === "Enter" &&
-                        (newItemValues[index] || "").trim().length > 1
+                        (newItemValues[sectionIndex] || "").trim().length > 1
                       ) {
                         e.preventDefault();
-                        handleAddItem(index);
+                        handleAddItem(sectionIndex);
                       }
                     }}
                     InputProps={{
@@ -326,9 +365,9 @@ export const ViewWishlist = ({ id }) => {
                         <InputAdornment position="end">
                           <IconButton
                             color="secondary"
-                            onClick={(e) => handleAddItem(index)}
+                            onClick={(e) => handleAddItem(sectionIndex)}
                             disabled={
-                              !((newItemValues[index] || "").trim().length > 1)
+                              !((newItemValues[sectionIndex] || "").trim().length > 1)
                             }
                           >
                             <AddCircle />

@@ -9,7 +9,7 @@ import {
   Divider,
   InputAdornment,
   CircularProgress,
-  Container,
+  Link,
   Dialog,
   DialogTitle,
   DialogActions,
@@ -22,8 +22,7 @@ import {
   ArrowCircleRight,
   ArrowDropDown,
   ArrowDropUp,
-  Circle,
-  Forward,
+  Link as LinkIcon,
   RemoveCircle,
   VerifiedUser,
 } from "@mui/icons-material";
@@ -68,7 +67,7 @@ export const ViewWishlist = ({ id }) => {
       try {
         const data = await getWishlist(id);
         setWishlist(data);
-        document.title = `${data.record?.name}`
+        document.title = `${data.record?.name}`;
       } catch (err) {
         setError("Failed to load wishlist");
       } finally {
@@ -143,14 +142,29 @@ export const ViewWishlist = ({ id }) => {
 
   // controlled input and handlers for items
   const [newItemValues, setNewItemValues] = useState({});
+  const [newItemLinkValues, setNewItemLinkValues] = useState({});
 
   const handleNewItemChange = (sectionIndex, value) => {
     setNewItemValues((prev) => ({ ...prev, [sectionIndex]: value }));
   };
 
+  const handleNewItemLinkChange = (sectionIndex, value) => {
+    setNewItemLinkValues((prev) => ({ ...prev, [sectionIndex]: value }));
+  };
+
+  const toggleItemLink = (sectionIndex) => {
+    if (newItemLinkValues[sectionIndex] === "") {
+      setNewItemLinkValues((prev) => ({ ...prev, [sectionIndex]: undefined }));
+    } else if (newItemLinkValues[sectionIndex] === undefined) {
+      setNewItemLinkValues((prev) => ({ ...prev, [sectionIndex]: "" }));
+    }
+  };
+
   const handleAddItem = (sectionIndex) => {
     const item = (newItemValues[sectionIndex] || "").trim();
     if (!item || item.length < 2) return;
+
+    const link = newItemLinkValues[sectionIndex] || undefined;
 
     setWishlist((prev) => {
       if (!prev) return;
@@ -159,10 +173,12 @@ export const ViewWishlist = ({ id }) => {
       copy.record.sections[sectionIndex].items.push({
         name: item,
         checked: false,
+        link: link ? link : undefined,
       });
       return copy;
     });
     setNewItemValues((prev) => ({ ...prev, [sectionIndex]: "" }));
+    setNewItemLinkValues((prev) => ({ ...prev, [sectionIndex]: undefined }));
   };
 
   const handleRemoveItem = (sectionIndex, itemIndex) => {
@@ -382,7 +398,20 @@ export const ViewWishlist = ({ id }) => {
                           </IconButton>
                         </Grid>
                         <Grid item xs={10}>
-                          <Typography>{item.name}</Typography>
+                          <Typography>
+                            {item.link ? (
+                              <Link
+                                color="secondary"
+                                href={item.link}
+                                target="_blank"
+                                rel="noreferrer"
+                              >
+                                {item.name}
+                              </Link>
+                            ) : (
+                              item.name
+                            )}
+                          </Typography>
                         </Grid>
                       </Grid>
                     ) : (
@@ -408,7 +437,18 @@ export const ViewWishlist = ({ id }) => {
                                   : "none",
                               }}
                             >
-                              {item.name}
+                              {item.link ? (
+                              <Link
+                                color="secondary"
+                                href={item.link}
+                                target="_blank"
+                                rel="noreferrer"
+                              >
+                                {item.name}
+                              </Link>
+                            ) : (
+                              item.name
+                            )}
                             </Typography>
                           }
                           labelPlacement="end"
@@ -419,46 +459,106 @@ export const ViewWishlist = ({ id }) => {
                 ))}
               </Grid>
               {id === myWishlistId && (
-                <Grid item paddingTop="12px">
-                  <TextField
-                    fullWidth
-                    size="small"
-                    variant="outlined"
-                    color="secondary"
-                    label="New Item"
-                    value={newItemValues[sectionIndex] || ""}
-                    onChange={(e) =>
-                      handleNewItemChange(sectionIndex, e.target.value)
-                    }
-                    onKeyDown={(e) => {
-                      if (
-                        e.key === "Enter" &&
-                        (newItemValues[sectionIndex] || "").trim().length > 1
-                      ) {
-                        e.preventDefault();
-                        handleAddItem(sectionIndex);
+                <>
+                  <Grid item paddingTop="12px">
+                    <TextField
+                      fullWidth
+                      size="small"
+                      variant="outlined"
+                      color="secondary"
+                      label="New Item"
+                      value={newItemValues[sectionIndex] || ""}
+                      onChange={(e) =>
+                        handleNewItemChange(sectionIndex, e.target.value)
                       }
-                    }}
-                    InputProps={{
-                      endAdornment: (
-                        <InputAdornment position="end">
-                          <IconButton
-                            color="secondary"
-                            onClick={(e) => handleAddItem(sectionIndex)}
-                            disabled={
-                              !(
-                                (newItemValues[sectionIndex] || "").trim()
-                                  .length > 1
-                              )
-                            }
+                      onKeyDown={(e) => {
+                        if (
+                          e.key === "Enter" &&
+                          (newItemValues[sectionIndex] || "").trim().length > 1
+                        ) {
+                          e.preventDefault();
+                          handleAddItem(sectionIndex);
+                        }
+                      }}
+                      InputProps={{
+                        endAdornment: (
+                          <div
+                            style={{
+                              display: "flex",
+                              flexDirection: "row",
+                              marginRight: "-12px",
+                            }}
                           >
-                            <AddCircle />
-                          </IconButton>
-                        </InputAdornment>
-                      ),
-                    }}
-                  />
-                </Grid>
+                            <InputAdornment position="end">
+                              <IconButton
+                                color="secondary"
+                                onClick={(e) => toggleItemLink(sectionIndex)}
+                                disabled={
+                                  !(
+                                    (newItemValues[sectionIndex] || "").trim()
+                                      .length > 1
+                                  )
+                                }
+                              >
+                                <LinkIcon />
+                              </IconButton>
+                            </InputAdornment>
+                            <InputAdornment position="end">
+                              <IconButton
+                                color="secondary"
+                                onClick={(e) => handleAddItem(sectionIndex)}
+                                disabled={
+                                  !(
+                                    (newItemValues[sectionIndex] || "").trim()
+                                      .length > 1
+                                  )
+                                }
+                              >
+                                <AddCircle />
+                              </IconButton>
+                            </InputAdornment>
+                          </div>
+                        ),
+                      }}
+                    />
+                  </Grid>
+                  {newItemLinkValues[sectionIndex] !== undefined && (
+                    <Grid item>
+                      <TextField
+                        fullWidth
+                        helperText={!(newItemLinkValues[sectionIndex] || "")
+                            .trim()
+                            .startsWith("http") && "Links have to start with http"}
+                        error={
+                          !(newItemLinkValues[sectionIndex] || "")
+                            .trim()
+                            .startsWith("http")
+                        }
+                        size="small"
+                        variant="outlined"
+                        color="secondary"
+                        label="Item Link (optional)"
+                        value={newItemLinkValues[sectionIndex] || ""}
+                        onKeyDown={(e) => {
+                          if (
+                            e.key === "Enter" &&
+                            (newItemValues[sectionIndex] || "").trim().length >
+                              1 &&
+                            (newItemLinkValues[sectionIndex] || "")
+                              .trim()
+                              .startsWith("http")
+                          ) {
+                            e.preventDefault();
+                            handleAddItem(sectionIndex);
+                          }
+                        }}
+                        onChange={(e) =>
+                          handleNewItemLinkChange(sectionIndex, e.target.value)
+                        }
+                      />
+                    </Grid>
+                  )}
+                </>
               )}
             </Fragment>
           ))}

@@ -68,6 +68,7 @@ export const ViewWishlist = ({ id }) => {
       try {
         const data = await getWishlist(id);
         setWishlist(data);
+        document.title = `${data.record?.name}`
       } catch (err) {
         setError("Failed to load wishlist");
       } finally {

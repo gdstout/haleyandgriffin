@@ -14,6 +14,10 @@ const ACCESS_KEY = "merry2025";
 export const CreateWishlist = () => {
   const navigate = useNavigate();
 
+  useEffect(() => {
+    document.title = "Create a Wishlist";
+  }, [])
+
   // form state
   const [name, setName] = useState("");
   const [password, setPassword] = useState("");
@@ -25,6 +29,7 @@ export const CreateWishlist = () => {
       name.length > 2 && password.length > 2 && accessKey === ACCESS_KEY
     );
   }, [name, password, accessKey]);
+
 
   // loading and submitting state
   const [loading, setLoading] = useState(false);

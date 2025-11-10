@@ -308,7 +308,7 @@ export const ViewWishlist = ({ id }) => {
                     sx={{ cursor: "pointer" }}
                     onDoubleClick={() => handleRemoveSection(sectionIndex)}
                   >
-                    {section.title}
+                    <strong>{section.title}</strong>
                     <IconButton size="small">
                       <ArrowDropUp onClick={() => handleMoveSection(sectionIndex, -1)} color="secondary"/>
                     </IconButton>

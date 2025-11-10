@@ -16,8 +16,11 @@ import { Fragment, useEffect, useState } from "react";
 import {
   AddCircle,
   ArrowCircleRight,
+  ArrowDropDown,
+  ArrowDropUp,
   Forward,
   RemoveCircle,
+  VerifiedUser,
 } from "@mui/icons-material";
 
 export const ViewWishlist = ({ id }) => {
@@ -101,6 +104,24 @@ export const ViewWishlist = ({ id }) => {
     setNewSectionValue("");
   };
 
+  const handleMoveSection = (index, upOrDown) => {
+    if(index === 0 && upOrDown === -1){
+      return;
+    }
+    if(index === wishlist.record.sections.length - 1 && upOrDown === 1){
+      return;
+    }
+
+    setWishlist((prev) => {
+      if(!prev) return;
+      const copy = structuredClone(prev);
+      const tmp = copy.record.sections[index + upOrDown];
+      copy.record.sections[index + upOrDown] = copy.record.sections[index];
+      copy.record.sections[index] = tmp;
+      return copy;
+    })
+  }
+
   const handleRemoveSection = (index) => {
     console.log("removing section", index);
     if (index < 0 || index > wishlist.record.sections.length) return;
@@ -165,7 +186,7 @@ export const ViewWishlist = ({ id }) => {
 
     const copy = structuredClone(wishlist);
     copy.record.sections[sectionIndex].items[itemIndex].checked =
-        !copy.record.sections[sectionIndex].items[itemIndex].checked;
+      !copy.record.sections[sectionIndex].items[itemIndex].checked;
     setWishlist(copy);
     try {
       const data = await updateWishlist(copy, id);
@@ -263,7 +284,9 @@ export const ViewWishlist = ({ id }) => {
       {wishlist?.record && !ownershipDialog && !loading && (
         <>
           <Grid item>
-            <Typography variant="h4">{wishlist.record.name}</Typography>
+            <Typography variant="h4">
+              {wishlist.record.name} <VerifiedUser color="secondary" />
+            </Typography>
           </Grid>
           <Grid item>
             <Button
@@ -286,6 +309,12 @@ export const ViewWishlist = ({ id }) => {
                     onDoubleClick={() => handleRemoveSection(sectionIndex)}
                   >
                     {section.title}
+                    <IconButton size="small">
+                      <ArrowDropUp onClick={() => handleMoveSection(sectionIndex, -1)} color="secondary"/>
+                    </IconButton>
+                    <IconButton size="small">
+                      <ArrowDropDown onClick={() => handleMoveSection(sectionIndex, 1)} color="secondary"/>
+                    </IconButton>
                   </Typography>
                 </Grid>
               ) : (
@@ -309,7 +338,9 @@ export const ViewWishlist = ({ id }) => {
                         <Grid item xs={2} paddingRight="10px">
                           <IconButton
                             color="error"
-                            onClick={() => handleRemoveItem(sectionIndex, itemIndex)}
+                            onClick={() =>
+                              handleRemoveItem(sectionIndex, itemIndex)
+                            }
                           >
                             <RemoveCircle />
                           </IconButton>
@@ -333,7 +364,17 @@ export const ViewWishlist = ({ id }) => {
                               }
                             ></Checkbox>
                           }
-                          label={<Typography sx={{textDecoration:item.checked ? "line-through" : "none"}}>{item.name}</Typography>}
+                          label={
+                            <Typography
+                              sx={{
+                                textDecoration: item.checked
+                                  ? "line-through"
+                                  : "none",
+                              }}
+                            >
+                              {item.name}
+                            </Typography>
+                          }
                           labelPlacement="end"
                         />
                       </div>
@@ -350,7 +391,9 @@ export const ViewWishlist = ({ id }) => {
                     color="secondary"
                     label="New Item"
                     value={newItemValues[sectionIndex] || ""}
-                    onChange={(e) => handleNewItemChange(sectionIndex, e.target.value)}
+                    onChange={(e) =>
+                      handleNewItemChange(sectionIndex, e.target.value)
+                    }
                     onKeyDown={(e) => {
                       if (
                         e.key === "Enter" &&
@@ -367,7 +410,10 @@ export const ViewWishlist = ({ id }) => {
                             color="secondary"
                             onClick={(e) => handleAddItem(sectionIndex)}
                             disabled={
-                              !((newItemValues[sectionIndex] || "").trim().length > 1)
+                              !(
+                                (newItemValues[sectionIndex] || "").trim()
+                                  .length > 1
+                              )
                             }
                           >
                             <AddCircle />

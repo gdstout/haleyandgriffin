@@ -476,7 +476,7 @@ export const ViewWishlist = ({ id }) => {
                           (e.key === "Enter" &&
                             (newItemValues[sectionIndex] || "").trim().length >
                               1) &&
-                          (newItemLinkValues[sectionIndex] !== undefined &&
+                          (newItemLinkValues[sectionIndex] === undefined ||
                             ((newItemLinkValues[sectionIndex] || "")
                               .trim()
                               .toLowerCase()

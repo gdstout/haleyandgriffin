@@ -331,7 +331,7 @@ export const ViewWishlist = ({ id }) => {
         <>
           <Grid item>
             <Typography variant="h4">
-              {wishlist.record.name} <VerifiedUser color="secondary" />
+              {wishlist.record.name} {myWishlistId === id && (<VerifiedUser color="secondary" />)}
             </Typography>
           </Grid>
           <Grid item>

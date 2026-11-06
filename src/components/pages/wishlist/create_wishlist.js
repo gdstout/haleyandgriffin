@@ -1,22 +1,16 @@
-import {
-  Button,
-  Divider,
-  Grid,
-  TextField,
-  Typography,
-} from "@mui/material";
+import { Button, Divider, Grid, TextField, Typography } from "@mui/material";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router";
 import { PageLink } from "../home";
 
-const ACCESS_KEY = "merry2025";
+const ACCESS_KEY = "merry2026";
 
 export const CreateWishlist = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
     document.title = "Create a Wishlist";
-  }, [])
+  }, []);
 
   // form state
   const [name, setName] = useState("");
@@ -26,10 +20,9 @@ export const CreateWishlist = () => {
 
   useEffect(() => {
     setCanCreate(
-      name.length > 2 && password.length > 2 && accessKey === ACCESS_KEY
+      name.length > 2 && password.length > 2 && accessKey === ACCESS_KEY,
     );
   }, [name, password, accessKey]);
-
 
   // loading and submitting state
   const [loading, setLoading] = useState(false);
@@ -41,8 +34,10 @@ export const CreateWishlist = () => {
     setError(null);
 
     try {
+      console.log(process.env);
       const apiKey = process.env.REACT_APP_JSONBIN_API_ACCESS_KEY;
       if (!apiKey) {
+        console.log("missing api key...");
         setError("Missing API key");
         setLoading(false);
         throw new Error("Missing API key");
@@ -52,7 +47,7 @@ export const CreateWishlist = () => {
         name: name,
         password: password,
         updatedAt: new Date().toISOString(),
-        sections: []
+        sections: [],
       };
 
       const response = await fetch("https://api.jsonbin.io/v3/b", {
@@ -99,7 +94,7 @@ export const CreateWishlist = () => {
       <Grid item>
         <TextField
           fullWidth
-          label="Password"
+          label="Create a Password"
           variant="outlined"
           color="secondary"
           value={password}
@@ -109,7 +104,7 @@ export const CreateWishlist = () => {
       <Grid item>
         <TextField
           fullWidth
-          label="Access Key"
+          label="Access Key (given to you)"
           variant="outlined"
           color="secondary"
           value={accessKey}

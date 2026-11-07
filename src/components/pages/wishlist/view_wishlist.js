@@ -36,7 +36,7 @@ export const ViewWishlist = ({ id }) => {
   const [loadingUpdate, setLoadingUpdate] = useState(false);
   const [error, setError] = useState(null);
   const [myWishlistId, setMyWishListId] = useState(
-    localStorage.getItem("my_wishlist_id")
+    localStorage.getItem("my_wishlist_id"),
   );
   const [ownershipDialog, setOwnershipDialog] = useState(false);
   const [passwordValue, setPasswordValue] = useState("");
@@ -230,7 +230,9 @@ export const ViewWishlist = ({ id }) => {
     if (process.env.REACT_APP_WISHLIST_SHARE_URL) {
       shareUrl.searchParams.set("id", id);
     }
+
     navigator.clipboard.writeText(shareUrl.toString());
+    console.log("copied wishlist: ", shareUrl.toString());
   };
 
   // DELETE WISHLIST DIALOG STATE
@@ -337,7 +339,8 @@ export const ViewWishlist = ({ id }) => {
         <>
           <Grid item>
             <Typography variant="h4">
-              {wishlist.record.name} {myWishlistId === id && (<VerifiedUser color="secondary" />)}
+              {wishlist.record.name}{" "}
+              {myWishlistId === id && <VerifiedUser color="secondary" />}
             </Typography>
           </Grid>
           <Grid item>
@@ -479,14 +482,14 @@ export const ViewWishlist = ({ id }) => {
                       }
                       onKeyDown={(e) => {
                         if (
-                          (e.key === "Enter" &&
-                            (newItemValues[sectionIndex] || "").trim().length >
-                              1) &&
+                          e.key === "Enter" &&
+                          (newItemValues[sectionIndex] || "").trim().length >
+                            1 &&
                           (newItemLinkValues[sectionIndex] === undefined ||
-                            ((newItemLinkValues[sectionIndex] || "")
+                            (newItemLinkValues[sectionIndex] || "")
                               .trim()
                               .toLowerCase()
-                              .startsWith("http")))
+                              .startsWith("http"))
                         ) {
                           e.preventDefault();
                           handleAddItem(sectionIndex);

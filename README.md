@@ -2,6 +2,40 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## Wishlist sharing previews (AWS Lambda)
+
+The wishlist preview Lambda returns wishlist-specific title and Open Graph
+metadata, then redirects visitors to the existing `/wishlist/:id` page.
+
+1. In the AWS Lambda console, create a function using the **Node.js 22.x**
+   runtime.
+2. Upload `lambda/share-preview/index.js` as the function code. The function
+   uses Node.js built-in `fetch`, so it has no package dependencies.
+3. In **Configuration > Environment variables**, add:
+   - `JSONBIN_API_ACCESS_KEY`: the Jsonbin access key. Store it only in Lambda;
+     do not use a `REACT_APP_` name for this server-side value.
+   - `APP_URL`: the app's HTTPS origin, for example `https://example.com`
+     (without a path).
+4. Create a **Function URL** with auth type **NONE**. This endpoint must be
+   publicly readable so messaging apps can fetch the preview. Allow the console
+   to add the required public resource policy. No CORS configuration is needed
+   because the endpoint is opened as a link, not called from browser JavaScript.
+5. Add the Function URL to the React app's environment as
+   `REACT_APP_WISHLIST_SHARE_URL`. For local development, put it in the ignored
+   `.env.local`; in AWS Amplify, add it as an app environment variable and
+   redeploy. This value is public and is not a secret.
+
+The app's **Copy Wishlist Link** buttons then copy the Lambda URL with the
+wishlist ID as `?id=...`. Requests without the environment variable configured
+continue to copy the current wishlist URL. The Lambda looks up only the
+wishlist name in Jsonbin; visitors land on the existing React wishlist route.
+
+To run the Lambda handler's tests locally (Node.js 18 or newer):
+
+```sh
+node --test lambda/share-preview/index.test.js
+```
+
 ## Available Scripts
 
 In the project directory, you can run:

@@ -224,7 +224,13 @@ export const ViewWishlist = ({ id }) => {
   };
 
   const copyToClipboard = () => {
-    navigator.clipboard.writeText(window.location.href);
+    const shareUrl = process.env.REACT_APP_WISHLIST_SHARE_URL
+      ? new URL(process.env.REACT_APP_WISHLIST_SHARE_URL)
+      : new URL(window.location.href);
+    if (process.env.REACT_APP_WISHLIST_SHARE_URL) {
+      shareUrl.searchParams.set("id", id);
+    }
+    navigator.clipboard.writeText(shareUrl.toString());
   };
 
   // DELETE WISHLIST DIALOG STATE
